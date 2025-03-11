@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghid Turistic</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            width: 200px;
+            height: 100vh; /* Ocupă întreaga înălțime a paginii */
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed; /* Fixează meniul în partea stângă */
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            display: block;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .content {
+            margin-left: 220px; /* Evit suprapunerea peste sidebar */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <a href="#">Ghid Turistic</a>
+        <a href="#">Destinații</a>
+        <a href="#">Feedback</a>
+        <a href="#">Autentifică-te</a>
+    </div>
+
+    <div class="content">
+        <h1>Bine ai venit!</h1>
+        <p>Aici vei găsi cele mai frumoase destinații turistice.</p>
+    </div>
+
+</body>
+</html>
