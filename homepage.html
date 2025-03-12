@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghid Turistic</title>
+    <title>Ghid Turistic România</title>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: Arial, sans-serif;
+            display: flex;
         }
 
         .sidebar {
             width: 200px;
-            height: 100vh; /* Ocupă întreaga înălțime a paginii */
+            height: 100vh;
             background-color: #2c3e50;
             color: white;
             display: flex;
             flex-direction: column;
             padding-top: 20px;
-            position: fixed; /* Fixează meniul în partea stângă */
+            position: fixed;
             left: 0;
             top: 0;
         }
@@ -37,9 +43,78 @@
         }
 
         .content {
-            margin-left: 220px; /* Evit suprapunerea peste sidebar */
-            padding: 20px;
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            
         }
+
+        .slider-container {
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slides img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: fade 9s infinite;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            font-weight: bold;
+            text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
+        }
+
+        .text-overlay span {
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .ro { color: #0057B7; }
+        .ma { color: #FFD700; } 
+        .nia { color: #DA291C; } 
+
+        .description {
+            width: 100%;
+            font-size: 20px;
+            color: black;
+            text-align: left;
+            text-indent: 30px;
+            margin-top: 10px;
+            padding-left: 5px;
+        }
+
+        .slides img:nth-child(1) { animation-delay: 0s; }
+        .slides img:nth-child(2) { animation-delay: 3s; }
+        .slides img:nth-child(3) { animation-delay: 6s; }
+
+        @keyframes fade {
+            0%, 30% { opacity: 1; }
+            40%, 100% { opacity: 0; }
+        }
+
     </style>
 </head>
 <body>
@@ -52,8 +127,57 @@
     </div>
 
     <div class="content">
-        <h1>Bine ai venit!</h1>
-        <p>Aici vei găsi cele mai frumoase destinații turistice.</p>
+        <div class="slider-container">
+            <div class="slides">
+                <img src="./images/image 1.jpg">
+                <img src="./images/image 2.jpg">
+                <img src="./images/image 3.jpg">
+            </div>
+
+            <div class="text-overlay">
+                <span class="ro">Ro</span><span class="ma">ma</span><span class="nia">nia</span>
+            </div>
+        </div>
+
+        <p class="description">
+            Descoperă cele mai frumoase locuri de văzut sau de vizitat din România în toată splendoarea lor! Peisaje care-ți taie răsuflarea, canalele din Delta Dunării, crestele Munților Carpați, păduri virgine, rezervatii naturale, peșteri sau stațiuni balneo-climaterice în care să-ți reîncarci bateriile la sfârșit de săptămână sau pe durata unui sejur. Bogăția naturală a României e completată de cea culturală, istorică și religioasă cu biserici de lemn, mănăstiri, cetăți și ruine, unele aflate pe lista Patrimoniului Mondial UNESCO.
+        </p>
+
+        <p class="description">
+            Banatul este o destinație turistică cunoscută mai ales pentru lanțurile muntoase și defileul Dunării din sudul regiunii. Acestea sunt, probabil și cele mai spectaculoase locuri din Banat. Deși în mare parte acoperită de câmpie, zona mai are de oferit vinuri gustoase, stațiuni termale și un centru urban mereu actual - Timișoara - cu o mulțime de obective turistice.
+        </p>
+
+        <p class="description">
+            Numeroase cetăți, castele, ape termale, peșteri, biserici de lemn și munți fermecători sunt printre obiectivele turistice din Crișana pe care le poți descoperi într-un weekend, într-un concediu de-o săptămână sau de cât îți permit timpul și bugetul.
+        </p>
+
+        <p class="description">
+            Peisaje pitorești, sate răsfirate idilic pe coline, meștesuguri vii și port popular păstrat intact - toate fac din Maramureș o destinație de vis pentru o vacanță de neuitat în România. Nu poate lipsi nici turismul de aventură, iubitorii activităților în aer liber găsind în Munții Maramureșului sau Munții Rodnei trasee numai bune de explorat la pas sau pe două roți.
+        </p>
+
+        <p class="description">
+            Fie că ești iubitor de natură, cultură, tradiții sau gastronomie, în Bucovina sau “Țara fagilor”, le poți avea pe toate. Bucovina este o regiune unică, plină de istorie și totodată un tărâm care te captivează iremediabil prin obiective turistice, peisaje minunate și tradiții unice.
+        </p>
+
+        <p class="description">
+            Moldova a devenit de ceva vreme sinonimă cu Bucovina. Când spui concediu în Moldova, gândul îți zboară la obcinele din nordul Moldovei și la casele care punctează peisajul mirific dimprejurul unor stațiuni precum Vatra Dornei. Însă locuri spectaculoase din Moldova sunt și parcurile naturale Vânători-Neamț sau Putna-Vrancea, Munții Ceahlău sau podgoriile din sudul regiunii. O plimbare prin fosta capitală a Moldovei medievale - orașul Iași - nu trebuie să lipsească din itinerar.
+        </p>
+        
+        <p class="description">
+            Dobrogea însumează o diversitate culturală, istorică și turistică unică, incluzând teritoriul cel mai nou al României - Insula Sacalin. Locurile uimitoare din Dobrogea surprind mereu, mai ales că doar jumătate din acest ținut e cunoscut turiștilor. Dobrogea nu înseamnă doar litoralul de la Marea Neagră, ci și ruine ale unor cetăți antice, cei mai vechi munți din Europa -Munții Măcinului-, sau vinuri cu o savoare aparte.
+        </p>
+
+        <p class="description">   
+            Muntenia poate fi o regiune plină de contraste din punct de vedere a activităților outdoor. Călătoria ta prin Muntenia te poartă de la cel mai înalt vârf muntos din România, la cele mai populare creste montane și pârtii de schi, apoi te coboară pe dealuri domoale numai bune de bicicletă și prin chei ideale pentru cățărat. Trece pe la cea mai renumită zonă viticolă din țară și se oprește tocmai în buza Dunării. Punctul zero al României - capitala București - se află tot în Muntenia.
+        </p>
+        
+        <p class="description">
+            Oltenia surprinde cu locuri superbe date fiind granițele ei naturale trasate de Munții Parâng și Retezat la nord, respectiv de Dunăre, la sud. Obiectivele turistice din Oltenia și poveștile cu haiduci vorbesc depre istoria zbuciumată a locului, dar și despre puterea ortodoxiei. În Oltenia găsești câteva stațiuni balneoclimaterice cu tradiție. Pe drumul pe care ciobanii din Transilvania treceau odată cu oile spre Oltenia, azi trece Transalpina - probabil cel mai spectaculos drum din România.
+        </p>
+
+        <p class="description">
+            Așezată în interiorul arcului carpatic, Transilvania este un tărâm cu păduri străvechi, rezervații naturale, și obiective de vizitat în orice anotimp. Dincolo de popularitatea derivată din legenda lui Vlad Țepeș, Transilvania turistică reprezintă un complex de particularități culturale, gastronomice și naturale care împreună au transformat-o probabil ceal mai căutată destinație turistică din România.
+        </p>    
     </div>
 
 </body>
