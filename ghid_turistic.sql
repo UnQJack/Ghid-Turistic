@@ -20,3 +20,19 @@ INSERT INTO destinatii (nume, descriere, imagine) VALUES
 ('Cimitirul Vesel de la Săpânța', 'Cimitirul Vesel din Săpânța este faimos pentru crucile viu colorate și epitafurile satirice, care descriu viața celor îngropați într-un mod unic și plin de umor.', 'images/cimitirul_vesel.jpg'),
 ('Cetatea Alba Carolina', 'Cetatea Alba Carolina, situată în Alba Iulia, este cea mai mare cetate din România, construită în stil Vauban în secolul XVIII. Este un simbol important al Unirii din 1918.', 'images/cetatea_alba_carolina.jpg');
 
+CREATE TABLE feedback (
+  id int AUTO_INCREMENT PRIMARY KEY,
+  name varchar(20) NOT NULL,
+  email varchar(30) NOT NULL,
+  feedbk varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE table auth(
+  id int AUTO_INCREMENT PRIMARY KEY,
+  username varchar(100) UNIQUE NOT NULL,
+  parola varchar(100) NOT NULL
+)
+
+INSERT INTO auth (username, parola) 
+VALUES ('admin', '$2y$10$wkpKzDjYBa5qM8SglA1D0OSrB4eQHCpyn5/D9N7A1csQexnQpiO2G');
+# a se adauga mai multe exemple
