@@ -1,6 +1,6 @@
 # Ghid-Turistic
 
-Se instaleaza WAMP
+<p>Se instaleaza WAMP</p>
 Asigură-te că WAMP este pornit și are iconița verde în taskbar.
 Schimba portul in MySQL din 3306 in 3307
 Start All Services
