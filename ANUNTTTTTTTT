@@ -1,3 +1,4 @@
+De rezolvat cerintele din baza de date principala ghid_turistic.sql
 Am automatizat paginile de view-more folosind o singura pagina (destinatie.php) si adaugand implicit 2 tabele noi in baza de date
 Toate butoanele de pe homepage merg (mai trebuie poze pt fiecare destinatie)
 Incepand de la pagina pt orase (care va fi cel mai probabil urmatoarea) ma voi folosi de ce e in proiect.sql
