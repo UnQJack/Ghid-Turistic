@@ -1,7 +1,7 @@
-Am automatizat paginile de view-more folosind o singura pagina (in lucru design) si adaugand implicit 2 tabele 2 in baza de date
+Am automatizat paginile de view-more folosind o singura pagina (destinatie.php) (in lucru design) si adaugand implicit 2 tabele noi in baza de date
 Toate butoanele de pe homepage merg (mai trebuie poze pt fiecare destinatie)
 Incepand de la pagina pt orase ma voi folosi de ce e in proiect.sql
 
-PS: Noapte buna!
+PS: Noapte buna! (am lucrat ca sa nu pierd ideea cu php :)) )
 Imediat voi incarca aici tot ce am lucrat
 Voi mai testa pe parcurs functionalitati
