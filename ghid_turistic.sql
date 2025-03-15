@@ -20,7 +20,6 @@ INSERT INTO destinatii (nume, descriere, imagine) VALUES
 ('Cimitirul Vesel de la Săpânța', 'Cimitirul Vesel din Săpânța este faimos pentru crucile viu colorate și epitafurile satirice, care descriu viața celor îngropați într-un mod unic și plin de umor.', 'images/cimitirul_vesel.jpg'),
 ('Cetatea Alba Carolina', 'Cetatea Alba Carolina, situată în Alba Iulia, este cea mai mare cetate din România, construită în stil Vauban în secolul XVIII. Este un simbol important al Unirii din 1918.', 'images/cetatea_alba_carolina.jpg');
 
-
 CREATE TABLE detalii_destinatii (
     id INT AUTO_INCREMENT PRIMARY KEY,
     destinatie_id INT NOT NULL,
@@ -40,7 +39,8 @@ INSERT INTO detalii_destinatii (destinatie_id, descriere_lunga, galerie_foto) VA
 (8, 'Cazanele Dunării reprezintă unul dintre cele mai spectaculoase peisaje din România. Chipul lui Decebal sculptat în stâncă este un punct de atracție important.', 'images/cazane1.jpg,images/cazane2.jpg,images/cazane3.jpg'),
 (9, 'Cimitirul Vesel din Săpânța este faimos în întreaga lume pentru crucile sale viu colorate și epitafurile hazlii care povestesc viața celor înmormântați acolo.', 'images/sapanta1.jpg,images/sapanta2.jpg,images/sapanta3.jpg'),
 (10, 'Cetatea Alba Carolina este un simbol istoric important al României. A fost restaurată și este o atracție turistică majoră.', 'images/alba1.jpg,images/alba2.jpg,images/alba3.jpg');
-# daca se poate niste descrieri mai lungi putin aici... dar nu i baiul mare ca oricum ocupa destul loc...
+# daca se poate niste descrieri mai lungi putin aici... si inca vreo 4 poze...
+
 
 
 
