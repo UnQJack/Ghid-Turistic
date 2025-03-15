@@ -40,7 +40,7 @@ INSERT INTO detalii_destinatii (destinatie_id, descriere_lunga, galerie_foto) VA
 (8, 'Cazanele Dunării reprezintă unul dintre cele mai spectaculoase peisaje din România. Chipul lui Decebal sculptat în stâncă este un punct de atracție important.', 'images/cazane1.jpg,images/cazane2.jpg,images/cazane3.jpg'),
 (9, 'Cimitirul Vesel din Săpânța este faimos în întreaga lume pentru crucile sale viu colorate și epitafurile hazlii care povestesc viața celor înmormântați acolo.', 'images/sapanta1.jpg,images/sapanta2.jpg,images/sapanta3.jpg'),
 (10, 'Cetatea Alba Carolina este un simbol istoric important al României. A fost restaurată și este o atracție turistică majoră.', 'images/alba1.jpg,images/alba2.jpg,images/alba3.jpg');
-
+# daca se poate niste descrieri mai lungi putin aici... dar nu i baiul mare ca oricum ocupa destul loc...
 
 
 
