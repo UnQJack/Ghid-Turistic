@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destinatii turistice</title>
+    <title>Orase turistice</title>
     <style>
         * {
             margin: 0;
@@ -97,10 +97,7 @@
 </head>
 <body>
     <div class="sidebar">
-        <a href="locuri.php">Locuri de vizitat</a>
-        <a href="#">Hoteluri</a>
-        <a href="#">Restaurante</a>
-        <a href="homepage.html">Înapoi</a>
+        <a href="destinatii.php">Înapoi</a>
     </div>
 
     <div class="main-content">

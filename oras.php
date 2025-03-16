@@ -50,14 +50,41 @@ mysqli_close($con);
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #f5f5f5;
             padding: 20px;
         }
+
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            display: block;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
         .container {
             max-width: 900px;
             margin: auto;
             padding: 20px;
+            margin-right: 165px;
         }
         .container img {
             max-width: 100%;
@@ -130,6 +157,12 @@ mysqli_close($con);
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <a href="#">Locuri de vizitat</a>
+        <a href="#">Hoteluri</a>
+        <a href="#">Restaurante</a>
+        <a href="orase.php">Înapoi</a>
+    </div>
     <div class="container">
         <h1><?php echo htmlspecialchars($row_dest['nume']); ?></h1>
 
@@ -153,7 +186,7 @@ mysqli_close($con);
             <?php endif; ?>
         </div>
 
-        <a href="destinatii.php" class="back-btn">Înapoi</a>
+        
     </div>
     <script>
     function openModal(src) {

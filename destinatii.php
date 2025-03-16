@@ -63,6 +63,7 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
+            cursor: pointer;
         }
 
         .text-content {
@@ -93,11 +94,39 @@
             background-color: #34495e;
         }
 
+        /* Modal pentru zoom */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 80%;
+            max-height: 80%;
+            margin-top: 5%;
+            border-radius: 8px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <a href="orase.html">Orase</a>
+        <a href="orase.php">Orase</a>
         <a href="#">Statiuni litorale</a>
         <a href="#">Statiuni muntoase</a>
         <a href="#">Statiuni dunarene</a>
@@ -120,7 +149,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='destination'>
                     <div class='image-container'>
-                        <img src='" . $row['imagine'] . "'>
+                        <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
                     </div>
                     <div class='text-content'>
                         <h2>" . $row['nume'] . "</h2>
@@ -133,10 +162,24 @@
            echo "<p style='text-align: center;'>Nu s-au găsit destinații.</p>";
         }
 
-    mysqli_close($con);
-    ?>
-        
-       
+        mysqli_close($con);
+        ?>
     </div>
+
+    <!-- Modal pentru zoom -->
+    <div id="zoomModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="modal-content" onclick="closeModal()">
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById("zoomModal").style.display = "block";
+            document.getElementById("modalImage").src = src;
+        }
+        function closeModal() {
+            document.getElementById("zoomModal").style.display = "none";
+        }
+    </script>
 </body>
 </html>
