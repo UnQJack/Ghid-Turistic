@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destinatii turistice</title>
+    <title>Locuri de vizitat</title>
     <style>
         * {
             margin: 0;
@@ -80,21 +80,6 @@
             color: #555;
         }
 
-        .view-more {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #2c3e50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .view-more:hover {
-            background-color: #34495e;
-        }
-
-        /* Modal pentru zoom */
         .modal {
             display: none;
             position: fixed;
@@ -105,6 +90,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
         }
+
         .modal-content {
             display: block;
             margin: auto;
@@ -113,6 +99,7 @@
             margin-top: 5%;
             border-radius: 8px;
         }
+
         .close {
             position: absolute;
             top: 15px;
@@ -126,12 +113,7 @@
 </head>
 <body>
     <div class="sidebar">
-    <a href="orase.php?categorie=orase">Orașe turistice</a>
-    <a href="orase.php?categorie=delta">Lunca și Delta Dunării</a>
-    <a href="orase.php?categorie=balneare">Stațiuni balneare</a>
-    <a href="orase.php?categorie=litorale">Stațiuni litorale</a>
-    <a href="orase.php?categorie=montane">Stațiuni montane</a>
-        <a href="homepage.html">Înapoi</a>
+        <a href="oras.php?id=<?php echo htmlspecialchars($_GET['id'] ?? ''); ?>">Înapoi</a>
     </div>
 
     <div class="main-content">
@@ -142,24 +124,28 @@
             die("Conexiunea a eșuat: " . mysqli_connect_error());
         }
 
-        $sql = "SELECT * FROM destinatii";
-        $result = mysqli_query($con, $sql);
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $id = intval($_GET['id']);
+            $sql = "SELECT * FROM locuri_vizitat WHERE orase_id = $id";
+            $result = mysqli_query($con, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='destination'>
-                    <div class='image-container'>
-                        <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
-                    </div>
-                    <div class='text-content'>
-                        <h2>" . $row['nume'] . "</h2>
-                        <p>" . $row['descriere'] . "</p>
-                        <a href='destinatie.php?id=" . $row['id'] . "' class='view-more'>View More</a>
-                    </div>
-                  </div>";
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='destination'>
+                        <div class='image-container'>
+                            <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
+                        </div>
+                        <div class='text-content'>
+                            <h2>" . htmlspecialchars($row['nume']) . "</h2>
+                            <p>" . htmlspecialchars($row['descriere']) . "</p>
+                        </div>
+                    </div>";
+                }
+            } else {
+                echo "<p style='text-align: center;'>Nu s-au găsit locuri de vizitat în acest oraș.</p>";
             }
         } else {
-           echo "<p style='text-align: center;'>Nu s-au găsit destinații.</p>";
+            echo "<p style='text-align: center;'>Oraș invalid sau parametru lipsă.</p>";
         }
 
         mysqli_close($con);

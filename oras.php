@@ -5,15 +5,30 @@ if (!$con) {
     die("Conexiunea a eșuat: " . mysqli_connect_error());
 }
 
-// Verificăm dacă avem un ID valid
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    die("Destinația nu există!");
+// Verificăm dacă avem parametrii necesari
+if (!isset($_GET['id']) || !is_numeric($_GET['id']) || !isset($_GET['categorie'])) {
+    die("Date invalide!");
 }
 
-$id = intval($_GET['id']);  
+$id = intval($_GET['id']);
+$categorie = $_GET['categorie']; // Categoria trebuie să fie specificată în URL
 
-// Interogăm datele principale din `destinatii`
-$sql_dest = "SELECT * FROM destinatii WHERE id = $id";
+// Lista de tabele pentru fiecare categorie
+$tabele = [
+    'orase'  => 'detalii_orase',
+    'orased' => 'detalii_orased',
+    'statb'  => 'detalii_statb',
+    'statm'  => 'detalii_statm',
+    'statl'  => 'detalii_statl'
+];
+
+// Verificăm dacă categoria este validă
+if (!array_key_exists($categorie, $tabele)) {
+    die("Categorie invalidă!");
+}
+
+// Selectăm datele principale din tabela corespunzătoare
+$sql_dest = "SELECT * FROM $categorie WHERE id = $id";
 $result_dest = mysqli_query($con, $sql_dest);
 
 if (!$result_dest || mysqli_num_rows($result_dest) == 0) {
@@ -22,8 +37,9 @@ if (!$result_dest || mysqli_num_rows($result_dest) == 0) {
 
 $row_dest = mysqli_fetch_assoc($result_dest);
 
-// Interogăm datele extinse din `detalii_destinatii`
-$sql_detalii = "SELECT * FROM detalii_destinatii WHERE destinatie_id = $id";
+// Selectăm detaliile din tabela corespunzătoare
+$tabela_detalii = $tabele[$categorie];
+$sql_detalii = "SELECT * FROM $tabela_detalii WHERE orase_id = $id";
 $result_detalii = mysqli_query($con, $sql_detalii);
 
 if (!$result_detalii || mysqli_num_rows($result_detalii) == 0) {
@@ -158,7 +174,7 @@ mysqli_close($con);
 </head>
 <body>
     <div class="sidebar">
-        <a href="#">Locuri de vizitat</a>
+        <a href="locuridevizitat.php?id=<?php echo $id; ?>">Locuri de vizitat</a>
         <a href="#">Hoteluri</a>
         <a href="#">Restaurante</a>
         <a href="orase.php">Înapoi</a>
