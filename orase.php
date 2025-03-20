@@ -174,7 +174,7 @@
                     <div class='text-content'>
                         <h2><?php echo $row["nume"]; ?></h2>
                         <p><?php echo $row["descriere"]; ?></p>
-                        <a href='oras.php?id=<?php echo $row["id"]; ?>&categorie=<?php echo $categorie; ?>' class='view-more'>View More</a>
+                        <a href='oras.php?id=<?php echo $row["id"]; ?>&categorie=<?php echo $categorie; ?>' class='view-more'>Vezi Detalii</a>
                         </div>
                 </div>
         <?php }} else { echo "<p>Nu s-au găsit destinații.</p>"; } ?>

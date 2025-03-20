@@ -154,7 +154,7 @@
                     <div class='text-content'>
                         <h2>" . $row['nume'] . "</h2>
                         <p>" . $row['descriere'] . "</p>
-                        <a href='destinatie.php?id=" . $row['id'] . "' class='view-more'>View More</a>
+                        <a href='destinatie.php?id=" . $row['id'] . "' class='view-more'>Vezi Detalii</a>
                     </div>
                   </div>";
             }
