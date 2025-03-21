@@ -157,9 +157,9 @@
 <body>
     <div class="sidebar">
         <?php if ($categorie === "delta") { ?>
-            <a href="categorie.php?categorie=delta&subcategorie=locuri">Locuri de vizitat</a>
-            <a href="categorie.php?categorie=delta&subcategorie=hoteluri">Hoteluri</a>
-            <a href="categorie.php?categorie=delta&subcategorie=restaurante">Restaurante</a>
+            <a href="orase.php?categorie=delta&subcategorie=locuri">Locuri de vizitat</a>
+            <a href="orase.php?categorie=delta&subcategorie=hoteluri">Hoteluri</a>
+            <a href="orase.php?categorie=delta&subcategorie=restaurante">Restaurante</a>
         <?php } ?>
             <a href="destinatii.php">Înapoi</a>
     </div>
@@ -174,7 +174,7 @@
                     <div class='text-content'>
                         <h2><?php echo $row["nume"]; ?></h2>
                         <p><?php echo $row["descriere"]; ?></p>
-                        <a href='oras.php?id=<?php echo $row["id"]; ?>&categorie=<?php echo $categorie; ?>' class='view-more'>Vezi Detalii</a>
+                        <a href='oras.php?id=<?php echo $row["id"]; ?>&categorie=<?php echo $tabel; ?>' class='view-more'>Vezi Detalii</a>
                         </div>
                 </div>
         <?php }} else { echo "<p>Nu s-au găsit destinații.</p>"; } ?>

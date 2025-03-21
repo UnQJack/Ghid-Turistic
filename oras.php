@@ -177,8 +177,8 @@ mysqli_close($con);
         <a href="locuridevizitat.php?id=<?php echo $id; ?>">Locuri de vizitat</a>
         <a href="#">Hoteluri</a>
         <a href="#">Restaurante</a>
-        <a href="orase.php">Înapoi</a>
-    </div>
+        <a href="orase.php?categorie=<?php echo htmlspecialchars($categorie === 'orased' ? 'delta' : $categorie); ?>">Înapoi</a>
+        </div>
     <div class="container">
         <h1><?php echo htmlspecialchars($row_dest['nume']); ?></h1>
 
