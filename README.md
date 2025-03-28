@@ -6,7 +6,7 @@
   Schimba portul in MySQL din 3306 in 3307 pentru versiunea in Windows</p>
   Start All Services
   Salveaza fisierele intr un folder sau implicit folderul recurent in wamp/www, respectiv mamp/https</p>
-  Acceseaza localhost/ghid pe un browser, implicit homepage.html
+  Acceseaza localhost/Ghid-Turistic-main pe un browser, implicit homepage.html
 </p>
 <p>
   Pentru a se conecta la baza de date utilizatorul o poate accesa din wamp/mamp -> phpmyadmin</p>
