@@ -113,20 +113,16 @@
 </head>
 <body>
     <div class="sidebar">
-    <?php
-$id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
-$categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? urlencode($_GET['categorie']) : 'orase';
+        <?php
+        $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
+        $categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? urlencode($_GET['categorie']) : 'orase';
 
-if ($id !== null) {
-    echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
-} else {
-    echo '<a href="index.php">Înapoi la pagina principală</a>';
-}
-?>
-
-
-
-
+        if ($id !== null) {
+        echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
+        } else {
+        echo '<a href="index.php">Înapoi la pagina principală</a>';
+        }
+        ?>
     </div>
 
     <div class="main-content">
