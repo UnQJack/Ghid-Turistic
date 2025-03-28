@@ -9,4 +9,4 @@
 
 
 <p>Pentru a se conecta la baza de date utilizatorul o poate accesa din wamp/mamp -> phpmyadmin</p>
-<p>Pentru versiunea de Windows:</p>
+Pentru versiunea de Windows:
