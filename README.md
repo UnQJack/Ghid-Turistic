@@ -15,6 +15,8 @@
   Port: 3307
   Username: root
   Password: 
+</p> 
+<p>  
   Pentru versiunea de MacOS:
   Host: localhost
   Port: 8889
