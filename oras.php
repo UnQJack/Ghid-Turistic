@@ -174,8 +174,13 @@ mysqli_close($con);
 </head>
 <body>
     <div class="sidebar">
-        <a href="locuridevizitat.php?id=<?php echo $id; ?>">Locuri de vizitat</a>
-        <a href="#">Hoteluri</a>
+        <?php
+            $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
+            $categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? urlencode($_GET['categorie']) : 'orase';
+        ?>
+        <a href="locuridevizitat.php?id=<?php echo $id; ?>&categorie=<?php echo $categorie; ?>" class="btn">Locuri de vizitat</a>
+        <a href="hoteluri.php?id=<?php 
+            echo $id; ?>">Hoteluri</a>
         <a href="#">Restaurante</a>
         <a href="orase.php?categorie=<?php 
             if ($categorie === 'orased') { 

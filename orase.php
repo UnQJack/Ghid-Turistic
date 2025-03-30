@@ -156,12 +156,7 @@
 </head>
 <body>
     <div class="sidebar">
-        <?php if ($categorie === "delta") { ?>
-            <a href="orase.php?categorie=delta&subcategorie=locuri">Locuri de vizitat</a>
-            <a href="orase.php?categorie=delta&subcategorie=hoteluri">Hoteluri</a>
-            <a href="orase.php?categorie=delta&subcategorie=restaurante">Restaurante</a>
-        <?php } ?>
-            <a href="destinatii.php">Înapoi</a>
+        <a href="destinatii.php">Înapoi</a>
     </div>
 
     <div class="main-content">    
