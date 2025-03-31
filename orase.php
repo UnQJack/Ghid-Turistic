@@ -103,11 +103,13 @@
         .text-content h2 {
             margin-bottom: 10px;
             color: #2c3e50;
+            font-family: Arial, sans-serif;
         }
 
         .text-content p {
             margin-bottom: 15px;
-            color: #555;
+            color: #2c3e50;
+            font-family: Arial, sans-serif;
         }
 
         .view-more {

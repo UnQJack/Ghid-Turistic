@@ -110,12 +110,14 @@ mysqli_close($con);
         }
         h1 {
             color: #2c3e50;
+            font-family: Arial, sans-serif;
         }
         p {
-            color: #555;
+            color: #2c3e50;
             font-size: 18px;
             line-height: 1.6;
             text-align: justify;
+            font-family: Arial, sans-serif;
         }
         .gallery {
             display: flex;
@@ -170,6 +172,12 @@ mysqli_close($con);
             font-weight: bold;
             cursor: pointer;
         }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
     </style>
 </head>
 <body>

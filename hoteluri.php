@@ -50,13 +50,19 @@
 
         .hotel {
             display: flex;
+            flex-direction: column;
             margin-bottom: 40px;
             border-bottom: 1px;
             padding-bottom: 20px;
         }
 
+        .top-section {
+            display: flex;
+            align-items: flex-start;
+        }
+
         .image-container {
-            width: 20%;
+            width: 200px;
         }
 
         .image-container img {
@@ -67,7 +73,8 @@
         }
 
         .hotel-info {
-            width: 70%;
+            margin-left: 20px;
+            flex-grow: 1;
         }
 
         .hotel-info h2 {
@@ -76,8 +83,8 @@
         }
 
         .hotel-info p {
-            margin-bottom: 10px;
-            color: #555;
+            margin-bottom: 5px;
+            color: #2c3e50;
         }
 
         .hotel-info .stars {
@@ -85,15 +92,13 @@
             font-size: 20px;
         }
 
-        .hotel-description {
-            margin-left: -20px;
-            width: calc(100% + 20px);
+        .hotel-details {
+            margin-top: 5px;
         }
 
-        .hotel-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .hotel-details p {
+            margin-bottom: 5px;
+            color: #2c3e50;
         }
 
         .modal {
@@ -152,25 +157,27 @@
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='hotel'>
-                            <div class='image-container'>
-                                <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
-                            </div>
-                            <div class='hotel-info'>
-                                <h2>" . htmlspecialchars($row['nume']) . "</h2>
-                                <p><strong>Adresă:</strong> " . htmlspecialchars($row['adresa']) . "</p>
-                                <p><strong>Nr. Telefon:</strong> " . htmlspecialchars($row['numar_telefon']) . "</p>
-                                <p><strong>Website:</strong> <a href='" . htmlspecialchars($row['website']) . "' target='_blank'>" . htmlspecialchars($row['website']) . "</a></p>
-                                <p><strong>Stele:</strong> <span class='stars'>";
-                                    for ($i = 0; $i < (int)$row['stele']; $i++) {
-                                        echo "★";
-                                    }
-                                echo "</span></p>
-                                <div class='hotel-description'>
-                                    <p><strong>Descriere:</strong> " . htmlspecialchars($row['descriere_lunga']) . "</p>
-                                    <p><strong>Facilități:</strong> " . htmlspecialchars($row['facilitati']) . "</p>
-                                    <p><strong>Tipul Camerei:</strong> " . htmlspecialchars($row['camere']) . "</p>
-                                    <p><strong>Preț:</strong> " . htmlspecialchars($row['pret'] ?? 'N/A') . " Lei/Noapte</p>
+                            <div class='top-section'>
+                                <div class='image-container'>
+                                    <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
                                 </div>
+                                <div class='hotel-info'>
+                                    <h2>" . htmlspecialchars($row['nume']) . "</h2>
+                                    <p><strong>Adresă:</strong> " . htmlspecialchars($row['adresa']) . "</p>
+                                    <p><strong>Nr. Telefon:</strong> " . htmlspecialchars($row['numar_telefon']) . "</p>
+                                    <p><strong>Website:</strong> <a href='" . htmlspecialchars($row['website']) . "' target='_blank'>" . htmlspecialchars($row['website']) . "</a></p>
+                                    <p><strong>Stele:</strong> <span class='stars'>";
+                                        for ($i = 0; $i < (int)$row['stele']; $i++) {
+                                            echo "★";
+                                        }
+                                    echo "</span></p>
+                                </div>
+                            </div>
+                            <div class='hotel-details'>
+                                <p><strong>Descriere:</strong> " . htmlspecialchars($row['descriere_lunga']) . "</p>
+                                <p><strong>Facilități:</strong> " . htmlspecialchars($row['facilitati']) . "</p>
+                                <p><strong>Tipul Camerei:</strong> " . htmlspecialchars($row['camere']) . "</p>
+                                <p><strong>Preț:</strong> " . htmlspecialchars($row['pret'] ?? 'N/A') . " Lei/Noapte</p>
                             </div>
                           </div>";
                 }
@@ -184,7 +191,6 @@
         mysqli_close($con);
         ?>
     </div>
-
     <!-- Modal pentru zoom -->
     <div id="zoomModal" class="modal" onclick="closeModal()">
         <span class="close" onclick="closeModal()">&times;</span>

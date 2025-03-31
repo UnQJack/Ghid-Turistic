@@ -50,7 +50,6 @@ mysqli_close($con);
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #f5f5f5;
             padding: 20px;
         }
@@ -58,6 +57,7 @@ mysqli_close($con);
             max-width: 900px;
             margin: auto;
             padding: 20px;
+            margin-right: 165px;
         }
         .container img {
             max-width: 100%;
@@ -67,12 +67,14 @@ mysqli_close($con);
         }
         h1 {
             color: #2c3e50;
+            font-family: Arial, sans-serif;
         }
         p {
-            color: #555;
+            color: #2c3e50;
             font-size: 18px;
             line-height: 1.6;
             text-align: justify;
+            font-family: Arial, sans-serif;
         }
         .gallery {
             display: flex;
@@ -97,6 +99,38 @@ mysqli_close($con);
             border-radius: 5px;
         }
         .back-btn:hover {
+            background-color: #34495e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            display: block;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
             background-color: #34495e;
         }
         /* Stilizare pentru modal (zoom pe imagine) */
@@ -130,6 +164,9 @@ mysqli_close($con);
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <a href="destinatii.php" class="back-btn">Înapoi</a>
+    </div>
     <div class="container">
         <h1><?php echo htmlspecialchars($row_dest['nume']); ?></h1>
 
@@ -153,7 +190,7 @@ mysqli_close($con);
             <?php endif; ?>
         </div>
 
-        <a href="destinatii.php" class="back-btn">Înapoi</a>
+        
     </div>
     <script>
     function openModal(src) {
