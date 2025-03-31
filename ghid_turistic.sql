@@ -251,6 +251,32 @@ INSERT INTO locuri_vizitat (orase_id, nume, descriere, imagine) VALUES
 (25, 'Prima fabrică de bere din România', 'Prima fabrică de bere din România, cunoscută astăzi sub numele de Timișoreana, a fost înființată în 1718 la Timișoara. Aceasta este cea mai veche fabrică de bere din țară, iar istoria sa este strâns legată de dezvoltarea industriei berii în România. Fondată de Johann von Rausch, un antreprenor german, fabrica a început cu producția unei beri de calitate superioară și a devenit rapid un simbol al orașului. Timișoreana a evoluat de-a lungul decadelor și a ajuns să fie un brand național cunoscut, având o tradiție de peste 300 de ani. Astăzi, Timișoreana este o marcă de prestigiu, simbolizând tradiția și calitatea în producția de bere din România.', 'images/timi4.jpg'),
 (25, 'Parcul Rozelor', 'Parcul Rozelor din Timișoara este unul dintre cele mai frumoase și iubite parcuri ale orașului, situat într-o zonă centrală, aproape de Catedrala Mitropolitană. Acesta a fost amenajat la începutul secolului XX și este renumit pentru frumusețea sa naturală și diversitatea vegetației. Parcul găzduiește o mare varietate de flori, arbuști și copaci, iar în centrul său se află un lac decorativ cu o fântână. Un element distinctiv al parcului este colecția impresionantă de trandafiri, motiv pentru care este numit „Parcul Rozelor”. Este un loc de relaxare ideal pentru localnici și turiști, având alei umbrite, bănci, locuri de joacă pentru copii și o atmosferă liniștită, perfectă pentru plimbări sau momente de răsfăț în natură.', 'images/timi5.jpg');
 
+CREATE TABLE hoteluri (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    orase_id INT NOT NULL,
+    nume VARCHAR(255) NOT NULL,
+    adresa TEXT NOT NULL,
+    numar_telefon VARCHAR(20) NOT NULL,
+    stele INT CHECK (stele BETWEEN 1 AND 5),
+    website VARCHAR(255),
+    descriere_lunga TEXT NOT NULL,
+    facilitati TEXT NOT NULL,
+    camere TEXT NOT NULL,
+    pret DECIMAL(10, 2) NOT NULL,
+    imagine VARCHAR(255),
+    FOREIGN KEY (orase_id) REFERENCES orase(id) ON DELETE CASCADE
+);
+
+INSERT INTO hoteluri (orase_id, nume, adresa, numar_telefon, stele, website, descriere_lunga, facilitati, camere, pret, imagine) VALUES 
+
+
+
+
+
+
+
+
+
 CREATE TABLE orased (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nume VARCHAR(100) NOT NULL, 
@@ -294,14 +320,14 @@ INSERT INTO detalii_orased (orase_id, descriere_lunga, galerie_foto) VALUES
 
 CREATE TABLE locuri_vizitat_delta (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    orased_id INT NOT NULL,
+    orase_id INT NOT NULL,
     nume VARCHAR(150) NOT NULL,
     descriere TEXT NOT NULL,
     imagine VARCHAR(255),
-    FOREIGN KEY (orased_id) REFERENCES orased(id) ON DELETE CASCADE
+    FOREIGN KEY (orase_id) REFERENCES orased(id) ON DELETE CASCADE
 );
 
-INSERT INTO locuri_vizitat_delta (orased_id, nume, descriere, imagine) VALUES
+INSERT INTO locuri_vizitat_delta (orase_id, nume, descriere, imagine) VALUES
 (1,'Faleza Dunarii','Faleza Dunării din Brăila este una dintre cele mai frumoase zone de promenadă din oraș, oferind priveliști spectaculoase asupra fluviului. Aici, localnicii și turiștii se pot plimba pe aleile umbrite de copaci, pot admira navele care traversează Dunărea și se pot relaxa pe bănci sau terase. Zona este ideală pentru jogging, plimbări cu bicicleta și evenimente culturale în aer liber. De asemenea, faleza găzduiește un port turistic și pontoane pentru ambarcațiuni de agrement. La apus, peisajul devine deosebit de pitoresc, atrăgând numeroși fotografi și iubitori ai naturii.','images/faleza.jpg'),
 (1,'Parcul Monument','Parcul Monument din Brăila este cel mai mare spațiu verde al orașului, ideal pentru relaxare, sport și activități în aer liber. Amenajat în secolul al XIX-lea, parcul impresionează prin aleile largi, arborii seculari și zonele de agrement. Aici se află un stadion, piste pentru biciclete și terenuri de sport. Parcul găzduiește evenimente culturale și festivaluri, devenind un loc popular pentru comunitate. În timpul verii, este o oază de răcoare, iar toamna, frunzișul colorat oferă un peisaj spectaculos. Este locul perfect pentru plimbări, socializare sau pur și simplu pentru a te bucura de natură.','images/parc.jpg'),
 (1,'Biserica Greaca','Biserica Greacă din Brăila este un monument istoric important, situat în centrul orașului. Construită în stil neoclasic la începutul secolului al XIX-lea, aceasta reprezenta locul de cult pentru comunitatea grecească din Brăila, care a avut o influență semnificativă în dezvoltarea economică și culturală a orașului. Biserica se remarcă prin arhitectura sa impunătoare, cu detalii fine și un interior decorat cu icoane și fresce deosebite. De-a lungul decadelor, biserica a fost un centru spiritual al grecilor din regiune și un simbol al diversității culturale a Brăilei.','images/biserica_greaca.jpg'),
@@ -358,6 +384,16 @@ INSERT INTO locuri_vizitat_delta (orased_id, nume, descriere, imagine) VALUES
 (11,'Biserica Sf. Nicolae','Biserica „Sfântul Nicolae” din Tulcea este un lăcaș de cult vechi și important din oraș, având o istorie care datează din secolul al XIX-lea. Construită în stil neoclasic, biserica impresionează prin arhitectura sa simplă, dar elegantă. Ea a fost ridicată de către comunitatea locală pentru a adăposti credincioșii din zona respectivă. Interiorul bisericii este decorat cu icoane și fresce ce reflectă tradițiile religioase ale regiunii. Biserica „Sfântul Nicolae” este un loc de cult activ, fiind un important punct de spiritualitate și cultură pentru locuitorii din Tulcea. Este, de asemenea, un obiectiv turistic, admirat pentru frumusețea și liniștea pe care le oferă vizitatorilor.','images/biserica_sf_nicolae.jpg'),
 (11,'Muzeul de Istorie si Arheologie','Muzeul de Istorie și Arheologie din Tulcea este un important obiectiv cultural ce adăpostește colecții valoroase ce ilustrează istoria regiunii Dobrogea și a Deltei Dunării. Muzeul include expoziții permanente care acoperă diverse perioade istorice, de la preistorie, civilizațiile grecești și romane, până la perioada medievală și modernă. Printre cele mai valoroase exponate se numără artefacte descoperite în situri arheologice din zonă, precum și obiecte din epoca dacică și romană. Una dintre cele mai remarcabile expoziții este legată de istoria Deltei Dunării, cu exponate ce reflectă evoluția regiunii și viața localnicilor. De asemenea, muzeul are o colecție de piese de ceramică, unelte de muncă și obiecte de cult, care oferă o perspectivă asupra tradițiilor și obiceiurilor locale. Muzeul este un loc ideal pentru cei interesați de istoria și arheologia regiunii Tulcea și Dobrogea.','images/muzeu_arheologie.jpg');
 
+
+
+
+
+
+
+
+
+
+
 CREATE TABLE statb (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nume VARCHAR(100) NOT NULL, 
@@ -367,6 +403,7 @@ CREATE TABLE statb (
 
 INSERT INTO statb (nume, descriere, imagine) VALUES
 ('Amara','Băile Amara, situat în județul Ialomița, este o stațiune balneoclimaterică renumită pentru lacul sărat Amara și nămolul sapropelic, utilizat în tratamente reumatologice și dermatologice. Orașul oferă relaxare, terapii naturale și peisaje liniștitoare, atrăgând turiști pentru sănătate și recreere.', 'images/amara.jpg'),
+('Baile Calacea','Băile Călacea, situate în județul Timiș, sunt renumite pentru apele termale cu proprietăți terapeutice, benefice pentru afecțiuni reumatologice și neurologice. Stațiunea oferă băi termale, spații de relaxare și un parc natural, fiind o destinație ideală pentru tratament și recreere.', 'images/calacea.jpg'),
 ('Baile Felix','Băile Felix, situate lângă Oradea, sunt cea mai mare stațiune balneară din România, renumită pentru apele termale cu proprietăți terapeutice. Oferă piscine, centre spa și tratamente pentru afecțiuni reumatologice. Stațiunea atrage turiști pentru relaxare, wellness și peisajele sale pitorești, fiind deschisă tot timpul anului.', 'images/felix.jpg'),
 ('Baile Govora','Băile Govora, situate în județul Vâlcea, sunt renumite pentru apele minerale cu efecte terapeutice asupra afecțiunilor respiratorii și reumatismale. Stațiunea oferă aer curat, peisaje liniștite și centre de tratament, fiind o destinație ideală pentru relaxare și recuperare medicală.', 'images/govora.jpg'),
 ('Baile Herculane','Băile Herculane, situate în Valea Cernei, sunt cea mai veche stațiune balneară din România, cu origini romane. Renumite pentru apele termale cu proprietăți curative, atrag turiști pentru tratamente reumatologice, peisaje spectaculoase și istorie. Oferă relaxare, drumeții și explorarea vestigiilor antice.', 'images/herculane.jpg'),
@@ -375,7 +412,6 @@ INSERT INTO statb (nume, descriere, imagine) VALUES
 ('Baile Tusnad','Băile Tușnad, situate în Carpații Orientali, sunt cea mai mică stațiune balneară din România, renumită pentru apele minerale și mofetele cu efecte benefice asupra sistemului cardiovascular. Oferă aer curat, peisaje montane și activități recreative precum drumeții și băi termale, fiind o destinație ideală pentru relaxare și tratament.', 'images/tusnad.jpg'),
 ('Balvanyos','Balvanyos, situată în județul Covasna, este o stațiune balneoclimaterică renumită pentru mofetele sale naturale și izvoarele minerale cu efecte benefice asupra circulației sanguine. Înconjurată de peisaje montane spectaculoase, oferă acces la Lacul Sfânta Ana și Tinovul Mohoș, fiind o destinație ideală pentru relaxare și tratamente naturale.','images/balvanyos.jpg'),
 ('Borsec','Borsec, situat în Carpații Orientali, este o stațiune balneară renumită pentru izvoarele sale de apă minerală cu efecte terapeutice. Oferă aer curat, peisaje montane și activități recreative precum drumeții, schi și relaxare în natură. Apa minerală Borsec este apreciată atât în România, cât și internațional.', 'images/borsec.jpg'),
-('Calacea','Băile Călacea, situate în județul Timiș, sunt renumite pentru apele termale cu proprietăți terapeutice, benefice pentru afecțiuni reumatologice și neurologice. Stațiunea oferă băi termale, spații de relaxare și un parc natural, fiind o destinație ideală pentru tratament și recreere.', 'images/calacea.jpg'),
 ('Calimanesti-Caciulata','Călimănești-Căciulata, situată pe Valea Oltului, este una dintre cele mai cunoscute stațiuni balneare din România, renumită pentru apele termale și peisajele montane spectaculoase. Oferă tratamente balneare, relaxare și atracții precum Mănăstirea Cozia și Parcul Național Cozia, fiind o destinație ideală pentru sănătate și turism.', 'images/calimanesti.jpg'),
 ('Lacu Rosu','Lacu Roșu, situat în Carpații Orientali, este un lac de baraj natural unic, format prin prăbușirea unui versant. Este înconjurat de peisaje spectaculoase și păduri de conifere, oferind activități precum drumeții, plimbări cu barca și explorarea Cheilor Bicazului. Destinație ideală pentru iubitorii de natură și aventură.', 'images/rosu.jpg'),
 ('Lacu Sarat','Lacu Sărat, situat lângă Brăila, este o stațiune balneară renumită pentru apa sărată și nămolul terapeutic, benefice în tratarea afecțiunilor reumatologice și dermatologice. Oferă baze de tratament, plajă și zone de relaxare, fiind o destinație ideală pentru sănătate și recreere.', 'images/sarat.jpg'),
@@ -395,15 +431,15 @@ CREATE TABLE detalii_statb (
 
 INSERT INTO detalii_statb (orase_id, descriere_lunga, galerie_foto) VALUES
 (1,'Amara, situată în județul Ialomița, este o destinație balneară cunoscută pentru efectele benefice ale lacului sărat și ale nămolului sapropelic. Stațiunea atrage vizitatori datorită proprietăților curative ale apei, utilizate în terapii pentru afecțiuni ale pielii și ale sistemului locomotor. Pe lângă tratamentele balneare, Amara oferă un cadru relaxant, cu aer curat și peisaje liniștite, ideale pentru odihnă și refacere. De asemenea, orașul găzduiește diverse evenimente culturale și activități de agrement, transformându-l într-o alegere potrivită atât pentru cei care caută relaxare, cât și pentru cei interesați de turismul de sănătate.','images/amara1.jpg, images/amara2.jpg, images/amara3.jpg, images/amara4.jpg'),
-(2,'Băile Felix, aflate în apropierea orașului Oradea, sunt o stațiune balneară apreciată pentru izvoarele termale cu efecte curative. Apele bogate în minerale sunt utilizate în tratarea afecțiunilor reumatice, neurologice și în programe de recuperare. Stațiunea dispune de baze de tratament moderne, piscine termale și centre de wellness, oferind o experiență de relaxare pe tot parcursul anului. Climatul blând și peisajele verzi completează atmosfera de refacere. Turiștii se pot bucura atât de terapii naturale, cât și de activități recreative, făcând din Băile Felix o destinație ideală pentru sănătate și relaxare.','images/felix1.jpg, images/felix2.jpg, images/felix3.jpg, images/felix4.jpg'),
-(3,'Băile Govora, aflate în județul Vâlcea, sunt o stațiune balneară apreciată pentru apele minerale bogate în iod, brom și sulf, recunoscute pentru beneficiile lor în tratarea afecțiunilor respiratorii și locomotorii. Climatul tonic, aerul ozonat și peisajele naturale oferă un cadru ideal pentru refacere și relaxare. Stațiunea dispune de baze moderne de tratament, unde se aplică proceduri balneare eficiente. Pe lângă terapii, vizitatorii se pot bucura de plimbări prin parcuri amenajate și de liniștea specifică zonei, făcând din Băile Govora o destinație ideală pentru sănătate și recreere.','images/govora1.jpg, images/govora2.jpg, images/govora3.jpg, images/govora4.jpg'),
-(4,'Băile Herculane, situate în pitoreasca Vale a Cernei, sunt una dintre cele mai vechi stațiuni balneare din Europa, având origini care datează din perioada romană. Cunoscută pentru apele sale termale sulfuroase, cu efecte benefice asupra sistemului locomotor și circulator, stațiunea atrage turiști în căutare de tratamente naturale și relaxare. Pe lângă terapiile balneare, vizitatorii se pot bucura de trasee montane spectaculoase, aer curat și vestigii istorice, cum ar fi băile romane și statuia lui Hercules. Băile Herculane rămân o destinație unică, îmbinând sănătatea, natura și istoria într-un cadru impresionant.','images/herculane1.jpg, images/herculane2.jpg, images/herculane3.jpg, images/herculane4.jpg'),
-(5,'Băile Homorod, situate în județul Harghita, sunt o stațiune balneoclimaterică apreciată pentru izvoarele minerale bogate în minerale, utilizate în tratarea afecțiunilor digestive și circulatorii. Zona se remarcă prin aerul curat, climatul liniștit și peisajele montane care oferă un cadru perfect pentru relaxare și refacere. Stațiunea dispune de facilități pentru tratamente balneare și recreere, atrăgând turiști în căutare de terapii naturale și odihnă activă. Băile Homorod sunt o alegere ideală pentru cei care doresc să se bucure de beneficiile naturii într-un mediu relaxant și reconfortant.','images/homorod1.jpg, images/homorod2.jpg, images/homorod3.jpg, images/homorod4.jpg'),
-(6,'Băile Olănești, situate în județul Vâlcea, sunt o stațiune balneară apreciată pentru numeroasele sale izvoare minerale cu efecte terapeutice. Apele sunt recunoscute pentru beneficiile lor în tratarea afecțiunilor renale, digestive, reumatologice și dermatologice. Stațiunea oferă un cadru natural deosebit, cu aer curat și peisaje montane, ideale pentru relaxare și refacere. În plus, dispune de centre moderne de tratament și wellness, atrăgând turiști atât pentru terapii balneare, cât și pentru recreere. Băile Olănești rămân o destinație populară pentru cei care caută sănătate, liniște și natură.','images/olanesti1.jpg, images/olanesti2.jpg, images/olanesti3.jpg, images/olanesti4.jpg'),
-(7,'Băile Tușnad, situate în inima Carpaților Orientali, sunt una dintre cele mai pitorești stațiuni balneare din România, apreciate pentru apele minerale și mofetele cu efecte terapeutice asupra sistemului cardiovascular și nervos. Climatul montan, aerul ozonat și peisajele spectaculoase creează un cadru perfect pentru relaxare și refacere. Stațiunea oferă baze de tratament moderne, băi termale și numeroase oportunități de recreere, precum drumeții și plimbări în natură. Datorită atmosferei sale liniștite și beneficiilor terapeutice, Băile Tușnad sunt o destinație ideală pentru cei care caută sănătate și odihnă.','images/tusnad1.jpg, images/tusnad2.jpg, images/tusnad3.jpg, images/tusnad4.jpg'),
-(8,'Balvanyos, aflată în județul Covasna, este o stațiune balneoclimaterică apreciată pentru mofetele naturale și izvoarele minerale cu proprietăți terapeutice asupra circulației sanguine și sistemului respirator. Amplasată într-un cadru montan deosebit, stațiunea oferă aer curat, trasee turistice și oportunități de relaxare în mijlocul naturii. Datorită proximității față de Lacul Sfânta Ana și Tinovul Mohoș, Balvanyos atrage atât turiști în căutare de tratamente naturale, cât și iubitori de aventură și peisaje spectaculoase. Combinând beneficiile balneare cu frumusețea peisajului, stațiunea este o alegere ideală pentru sănătate și recreere.','images/balvanyos1.jpg, images/balvanyos2.jpg, images/balvanyos3.jpg, images/balvanyos4.jpg'),
-(9,'Borsec, situat în inima Carpaților Orientali, este una dintre cele mai cunoscute stațiuni balneare din România, celebră pentru izvoarele sale de apă minerală cu proprietăți terapeutice. Apele de aici sunt apreciate pentru beneficiile asupra sistemului digestiv și renal, fiind recunoscute la nivel internațional. Stațiunea oferă un climat tonic, aer curat și peisaje montane spectaculoase, ideale pentru relaxare și refacere. În plus, turiștii pot practica diverse activități recreative, precum drumeții, schi și explorarea traseelor naturale. Borsec rămâne o destinație de top pentru sănătate, natură și aventură.','images/borsec1.jpg, images/borsec2.jpg, images/borsec3.jpg, images/borsec4.jpg'),
-(10,'Băile Călacea, aflate în județul Timiș, sunt o stațiune balneară cunoscută pentru apele termale cu efecte benefice asupra sistemului locomotor și nervos. Datorită compoziției minerale, aceste ape sunt utilizate în tratamente pentru afecțiuni reumatologice și neurologice. Stațiunea oferă băi termale moderne, spații de relaxare și un parc natural ce completează atmosfera de liniște și refacere. Climatul blând și peisajele verzi atrag turiști atât pentru tratamente, cât și pentru recreere. Băile Călacea reprezintă o alegere ideală pentru cei care caută sănătate, odihnă și echilibru natural.','images/calacea1.jpg, images/calacea2.jpg, images/calacea3.jpg, images/calacea4.jpg'),
+(2,'Băile Călacea, aflate în județul Timiș, sunt o stațiune balneară cunoscută pentru apele termale cu efecte benefice asupra sistemului locomotor și nervos. Datorită compoziției minerale, aceste ape sunt utilizate în tratamente pentru afecțiuni reumatologice și neurologice. Stațiunea oferă băi termale moderne, spații de relaxare și un parc natural ce completează atmosfera de liniște și refacere. Climatul blând și peisajele verzi atrag turiști atât pentru tratamente, cât și pentru recreere. Băile Călacea reprezintă o alegere ideală pentru cei care caută sănătate, odihnă și echilibru natural.','images/calacea1.jpg, images/calacea2.jpg, images/calacea3.jpg, images/calacea4.jpg'),
+(3,'Băile Felix, aflate în apropierea orașului Oradea, sunt o stațiune balneară apreciată pentru izvoarele termale cu efecte curative. Apele bogate în minerale sunt utilizate în tratarea afecțiunilor reumatice, neurologice și în programe de recuperare. Stațiunea dispune de baze de tratament moderne, piscine termale și centre de wellness, oferind o experiență de relaxare pe tot parcursul anului. Climatul blând și peisajele verzi completează atmosfera de refacere. Turiștii se pot bucura atât de terapii naturale, cât și de activități recreative, făcând din Băile Felix o destinație ideală pentru sănătate și relaxare.','images/felix1.jpg, images/felix2.jpg, images/felix3.jpg, images/felix4.jpg'),
+(4,'Băile Govora, aflate în județul Vâlcea, sunt o stațiune balneară apreciată pentru apele minerale bogate în iod, brom și sulf, recunoscute pentru beneficiile lor în tratarea afecțiunilor respiratorii și locomotorii. Climatul tonic, aerul ozonat și peisajele naturale oferă un cadru ideal pentru refacere și relaxare. Stațiunea dispune de baze moderne de tratament, unde se aplică proceduri balneare eficiente. Pe lângă terapii, vizitatorii se pot bucura de plimbări prin parcuri amenajate și de liniștea specifică zonei, făcând din Băile Govora o destinație ideală pentru sănătate și recreere.','images/govora1.jpg, images/govora2.jpg, images/govora3.jpg, images/govora4.jpg'),
+(5,'Băile Herculane, situate în pitoreasca Vale a Cernei, sunt una dintre cele mai vechi stațiuni balneare din Europa, având origini care datează din perioada romană. Cunoscută pentru apele sale termale sulfuroase, cu efecte benefice asupra sistemului locomotor și circulator, stațiunea atrage turiști în căutare de tratamente naturale și relaxare. Pe lângă terapiile balneare, vizitatorii se pot bucura de trasee montane spectaculoase, aer curat și vestigii istorice, cum ar fi băile romane și statuia lui Hercules. Băile Herculane rămân o destinație unică, îmbinând sănătatea, natura și istoria într-un cadru impresionant.','images/herculane1.jpg, images/herculane2.jpg, images/herculane3.jpg, images/herculane4.jpg'),
+(6,'Băile Homorod, situate în județul Harghita, sunt o stațiune balneoclimaterică apreciată pentru izvoarele minerale bogate în minerale, utilizate în tratarea afecțiunilor digestive și circulatorii. Zona se remarcă prin aerul curat, climatul liniștit și peisajele montane care oferă un cadru perfect pentru relaxare și refacere. Stațiunea dispune de facilități pentru tratamente balneare și recreere, atrăgând turiști în căutare de terapii naturale și odihnă activă. Băile Homorod sunt o alegere ideală pentru cei care doresc să se bucure de beneficiile naturii într-un mediu relaxant și reconfortant.','images/homorod1.jpg, images/homorod2.jpg, images/homorod3.jpg, images/homorod4.jpg'),
+(7,'Băile Olănești, situate în județul Vâlcea, sunt o stațiune balneară apreciată pentru numeroasele sale izvoare minerale cu efecte terapeutice. Apele sunt recunoscute pentru beneficiile lor în tratarea afecțiunilor renale, digestive, reumatologice și dermatologice. Stațiunea oferă un cadru natural deosebit, cu aer curat și peisaje montane, ideale pentru relaxare și refacere. În plus, dispune de centre moderne de tratament și wellness, atrăgând turiști atât pentru terapii balneare, cât și pentru recreere. Băile Olănești rămân o destinație populară pentru cei care caută sănătate, liniște și natură.','images/olanesti1.jpg, images/olanesti2.jpg, images/olanesti3.jpg, images/olanesti4.jpg'),
+(8,'Băile Tușnad, situate în inima Carpaților Orientali, sunt una dintre cele mai pitorești stațiuni balneare din România, apreciate pentru apele minerale și mofetele cu efecte terapeutice asupra sistemului cardiovascular și nervos. Climatul montan, aerul ozonat și peisajele spectaculoase creează un cadru perfect pentru relaxare și refacere. Stațiunea oferă baze de tratament moderne, băi termale și numeroase oportunități de recreere, precum drumeții și plimbări în natură. Datorită atmosferei sale liniștite și beneficiilor terapeutice, Băile Tușnad sunt o destinație ideală pentru cei care caută sănătate și odihnă.','images/tusnad1.jpg, images/tusnad2.jpg, images/tusnad3.jpg, images/tusnad4.jpg'),
+(9,'Balvanyos, aflată în județul Covasna, este o stațiune balneoclimaterică apreciată pentru mofetele naturale și izvoarele minerale cu proprietăți terapeutice asupra circulației sanguine și sistemului respirator. Amplasată într-un cadru montan deosebit, stațiunea oferă aer curat, trasee turistice și oportunități de relaxare în mijlocul naturii. Datorită proximității față de Lacul Sfânta Ana și Tinovul Mohoș, Balvanyos atrage atât turiști în căutare de tratamente naturale, cât și iubitori de aventură și peisaje spectaculoase. Combinând beneficiile balneare cu frumusețea peisajului, stațiunea este o alegere ideală pentru sănătate și recreere.','images/balvanyos1.jpg, images/balvanyos2.jpg, images/balvanyos3.jpg, images/balvanyos4.jpg'),
+(10,'Borsec, situat în inima Carpaților Orientali, este una dintre cele mai cunoscute stațiuni balneare din România, celebră pentru izvoarele sale de apă minerală cu proprietăți terapeutice. Apele de aici sunt apreciate pentru beneficiile asupra sistemului digestiv și renal, fiind recunoscute la nivel internațional. Stațiunea oferă un climat tonic, aer curat și peisaje montane spectaculoase, ideale pentru relaxare și refacere. În plus, turiștii pot practica diverse activități recreative, precum drumeții, schi și explorarea traseelor naturale. Borsec rămâne o destinație de top pentru sănătate, natură și aventură.','images/borsec1.jpg, images/borsec2.jpg, images/borsec3.jpg, images/borsec4.jpg'),
 (11,'Călimănești-Căciulata, situată pe pitoreasca Vale a Oltului, este una dintre cele mai apreciate stațiuni balneare din România, recunoscută pentru apele sale termale cu proprietăți curative. Stațiunea oferă baze moderne de tratament, piscine cu ape minerale și un cadru natural ideal pentru relaxare și refacere. În plus, atracțiile din zonă, precum Mănăstirea Cozia și Parcul Național Cozia, completează experiența turiștilor prin oportunități de explorare culturală și drumeții. Datorită combinației dintre beneficiile terapeutice, peisajele spectaculoase și oferta diversificată de activități, Călimănești-Căciulata rămâne o destinație de top pentru sănătate și turism.','images/calimanesti1.jpg, images/calimanesti2.jpg, images/calimanesti3.jpg, images/calimanesti4.jpg'),
 (12,'Lacu Roșu, aflat în inima Carpaților Orientali, este un lac de baraj natural spectaculos, format în urma unei alunecări de teren. Înconjurat de păduri de conifere și stânci impunătoare, oferă un peisaj deosebit și un refugiu perfect pentru iubitorii de natură. Zona este ideală pentru drumeții, plimbări cu barca și explorarea impresionantelor Chei ale Bicazului. Datorită atmosferei sale liniștite și frumuseții naturale, Lacu Roșu atrage turiști în căutare de aventură, relaxare și peisaje montane deosebite, fiind una dintre cele mai pitorești destinații din România.','images/rosu1.jpg, images/rosu2.jpg, images/rosu3.jpg, images/rosu4.jpg'),
 (13,'Lacu Sărat, aflat în apropierea Brăilei, este o stațiune balneară cunoscută pentru apa sărată și nămolul sapropelic cu proprietăți terapeutice. Aceste resurse naturale sunt utilizate în tratamente pentru afecțiuni reumatologice, dermatologice și ale sistemului locomotor. Stațiunea dispune de baze moderne de tratament, zone de relaxare și o plajă amenajată, oferind o combinație perfectă între terapie și recreere. Datorită climatului favorabil și efectelor benefice ale apei și nămolului, Lacu Sărat atrage anual turiști în căutare de sănătate și odihnă într-un cadru natural liniștit.','images/sarat1.jpg, images/sarat2.jpg, images/sarat3.jpg, images/sarat4.jpg'),
@@ -413,30 +449,23 @@ INSERT INTO detalii_statb (orase_id, descriere_lunga, galerie_foto) VALUES
 (17,'Slănic Moldova, situată în pitorescul decor al Carpaților Orientali, este o stațiune balneară apreciată pentru izvoarele sale minerale cu efecte benefice asupra sănătății. Cunoscute pentru tratarea afecțiunilor digestive, renale și respiratorii, aceste ape atrag turiști în căutare de tratamente naturale. Stațiunea oferă aer curat, peisaje montane spectaculoase și multiple oportunități de recreere, inclusiv drumeții, sporturi de iarnă și plimbări relaxante prin Parcul Central. Datorită combinației dintre terapii balneare și activități în aer liber, Slănic Moldova este o destinație ideală pentru sănătate, relaxare și refacere.','images/slanic1.jpg, images/slanic2.jpg, images/slanic3.jpg, images/slanic4.jpg'),
 (18,'Sovata, situată în inima Transilvaniei, este o stațiune balneară de renume, faimoasă pentru Lacul Ursu, un lac helioterm unic în Europa. Datorită combinației dintre apa sărată și stratificarea termică, lacul are efecte terapeutice remarcabile, fiind recomandat pentru tratarea afecțiunilor reumatologice, ginecologice și dermatologice. Pe lângă băile curative, stațiunea oferă trasee de drumeție prin păduri pitorești, centre de wellness și spa, precum și oportunități de relaxare pe tot parcursul anului. Atmosfera liniștită, aerul curat și frumusețea naturală transformă Sovata într-o destinație ideală pentru sănătate și recreere.','images/sovata1.jpg, images/sovata2.jpg, images/sovata3.jpg, images/sovata4.jpg');
 
-
-
-
-
-
-
-
-CREATE TABLE hoteluri (
+CREATE TABLE locuri_vizitat_statb (
     id INT AUTO_INCREMENT PRIMARY KEY,
     orase_id INT NOT NULL,
-    nume VARCHAR(255) NOT NULL,
-    adresa TEXT NOT NULL,
-    numar_telefon VARCHAR(20) NOT NULL,
-    stele INT CHECK (stele BETWEEN 1 AND 5),
-    website VARCHAR(255),
-    descriere_lunga TEXT NOT NULL,
-    facilitati TEXT NOT NULL,
-    camere TEXT NOT NULL,
-    pret DECIMAL(10, 2) NOT NULL,
+    nume VARCHAR(150) NOT NULL,
+    descriere TEXT NOT NULL,
     imagine VARCHAR(255),
-    FOREIGN KEY (orase_id) REFERENCES orase(id) ON DELETE CASCADE
+    FOREIGN KEY (orase_id) REFERENCES statb(id) ON DELETE CASCADE
 );
 
-INSERT INTO hoteluri (orase_id, nume, adresa, numar_telefon, stele, website, descriere_lunga, facilitati, camere, pret, imagine) VALUES 
+INSERT INTO locuri_vizitat_delta (orase_id, nume, descriere, imagine) VALUES
+()
+
+
+
+
+
+
 
 
 
