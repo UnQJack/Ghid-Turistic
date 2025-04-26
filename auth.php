@@ -73,7 +73,7 @@ mysqli_close($con);
 			    <input type="password" name="parola" class="form-control" required>
 			</div>
             <div class="wrapper">
-				<button type="submit" class="btn btn-primary" name="login">LogIn</button>
+				<button type="submit" class="btn btn-primary" name="login">Autentifică-te</button>
 			</div>
 		</form>
 	</div>

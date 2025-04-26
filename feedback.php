@@ -38,7 +38,7 @@ mysqli_close($con);
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Feedback Form</title>
+	<title>Feedback</title>
 	<link rel="stylesheet" type="text/css" href="feedback.css">
 </head>
 <body>
@@ -46,7 +46,7 @@ mysqli_close($con);
         <a href="homepage.html">Înapoi</a>
     </div>
 	<div class="feedback">
-		<h1 style="color: #2c3e50;">Feedback Form</h1>
+		<h1 style="color: #2c3e50;">Feedback</h1>
 		<form name="feedbackForm" method="POST" action="feedback.php">
 			<div class="form-group">
 			    <label>Your Name</label>
