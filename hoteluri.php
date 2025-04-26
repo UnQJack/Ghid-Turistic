@@ -161,6 +161,12 @@
         else if($categorie == 'statb') {
             $sql = "SELECT * FROM hoteluri_statb WHERE statb_id = $id";
         }
+        else if($categorie == 'statl') {
+            $sql = "SELECT * FROM hoteluri_statbl WHERE statb_id = $id";
+        }
+        else if($categorie == 'statm') {
+            $sql = "SELECT * FROM hoteluri_statm WHERE statb_id = $id";
+        }
         else {
             $sql = "SELECT * FROM hoteluri WHERE orase_id = $id";
         }

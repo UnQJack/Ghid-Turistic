@@ -169,6 +169,12 @@
         else if ($categorie == 'statb') {
             $sql = "SELECT * FROM restaurante_statb WHERE statb_id = $id";
         }
+        else if ($categorie == 'statl') {
+            $sql = "SELECT * FROM restaurante_statl WHERE statb_id = $id";
+        }
+        else if ($categorie == 'statm') {
+            $sql = "SELECT * FROM restaurante_statm WHERE statb_id = $id";
+        }
         else {
             $sql = "SELECT * FROM restaurante WHERE orase_id = $id";
         }
