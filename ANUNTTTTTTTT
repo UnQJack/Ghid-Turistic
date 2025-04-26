@@ -1,7 +1,0 @@
-De rezolvat cerintele din baza de date principala ghid_turistic.sql
-Tabelul cu orașe va fi la fel ca destinații și în plus va ma exista unul detalii_oras la fel ca detalii_destinatie
-Am automatizat paginile de view-more folosind o singura pagina (destinatie.php) si adaugand implicit un tabel nou in baza de date
-Toate butoanele de pe homepage merg (mai trebuie poze pt fiecare destinatie)
-Incepand de la pagina pt orase (care va fi cel mai probabil urmatoarea) ma voi folosi de ce e in proiect.sql
-
-nu mai stiu ce sa scriu aici ca intre timp am schimbat multe...
