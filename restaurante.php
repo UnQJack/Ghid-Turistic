@@ -143,9 +143,13 @@
 <body>
     <div class="sidebar">
         <?php
-        $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
-        $categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? urlencode($_GET['categorie']) : 'orase';
-        echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
+            $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
+            $categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? urlencode($_GET['categorie']) : 'orase';
+            if ($id !== null) {
+                echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
+            } else {
+                echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
+            }
         ?>
     </div>
 
@@ -170,10 +174,10 @@
             $sql = "SELECT * FROM restaurante_statb WHERE statb_id = $id";
         }
         else if ($categorie == 'statl') {
-            $sql = "SELECT * FROM restaurante_statl WHERE statb_id = $id";
+            $sql = "SELECT * FROM restaurante_statl WHERE statl_id = $id";
         }
         else if ($categorie == 'statm') {
-            $sql = "SELECT * FROM restaurante_statm WHERE statb_id = $id";
+            $sql = "SELECT * FROM restaurante_statm WHERE statm_id = $id";
         }
         else {
             $sql = "SELECT * FROM restaurante WHERE orase_id = $id";

@@ -673,7 +673,7 @@ CREATE TABLE restaurante_delta (
     meniu TEXT,
     imagine VARCHAR(255),
     progr TEXT NOT NULL,
-    FOREIGN KEY (orased_id) REFERENCES orase(id) ON DELETE CASCADE
+    FOREIGN KEY (orased_id) REFERENCES orased(id) ON DELETE CASCADE
 );
 
 INSERT INTO restaurante_delta (orased_id, nume, adresa, numar_telefon, stele, website, descriere_lunga, facilitati, meniu, imagine, progr) VALUES
@@ -766,14 +766,14 @@ INSERT INTO detalii_statb (orase_id, descriere_lunga, galerie_foto) VALUES
 -- pagina locuri_vizitat_statiune_balneare
 CREATE TABLE locuri_vizitat_statb (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    orase_id INT NOT NULL,
+    statb_id INT NOT NULL,
     nume VARCHAR(150) NOT NULL,
     descriere TEXT NOT NULL,
     imagine VARCHAR(255),
-    FOREIGN KEY (orase_id) REFERENCES statb(id) ON DELETE CASCADE
+    FOREIGN KEY (statb_id) REFERENCES statb(id) ON DELETE CASCADE
 );
 
-INSERT INTO locuri_vizitat_statb (orase_id, nume, descriere, imagine) VALUES
+INSERT INTO locuri_vizitat_statb (statb_id, nume, descriere, imagine) VALUES
 (1,'Lacul Amara','Lacul Amara, situat în județul Ialomița, este o destinație balneară renumită pentru apa sărată și nămolul sapropelic cu proprietăți terapeutice. Aflată lângă orașul Slobozia, stațiunea atrage turiști pentru tratamente reumatologice, dermatologice și de recuperare. Pe malul lacului, există plaje amenajate, unde vizitatorii se pot relaxa și bucura de soare. Parcul Stațiunii Amara oferă un cadru natural plăcut pentru plimbări. În apropiere, se poate vizita Muzeul Național al Agriculturii sau Catedrala Episcopală din Slobozia. Lacul Amara rămâne un loc ideal pentru sănătate și relaxare, departe de agitația urbană.','images/lacul_amara.jpg'),
 (1,'Plaja Mircesti','Plaja Mircești, situată pe malul Lacului Amara din județul Ialomița, este una dintre cele mai apreciate zone de relaxare din stațiunea balneară Amara. Cu nisip fin și ape sărate, plaja atrage turiști în căutare de băi terapeutice și bronz natural. Zona este ideală pentru relaxare, plimbări și tratamente cu nămol sapropelic, recunoscut pentru beneficiile sale asupra sănătății. De asemenea, vizitatorii pot explora Parcul Stațiunii Amara sau pot face o excursie la Slobozia, aflată în apropiere. Plaja Mircești oferă o combinație perfectă de natură, liniște și tratamente naturale.','images/plaja_mircesti.jpg'),
 (1,'Parcul Statiunii Amara','Parcul stațiunii Amara este un loc de relaxare și recreere situat în apropierea Lacului Amara, renumit pentru proprietățile terapeutice ale apelor sale sărate. Acesta oferă vizitatorilor un cadru natural plăcut, cu alei umbrite, zone de odihnă și bănci, ideal pentru plimbări sau momente de liniște. Parcul este frecventat de turiști care vin pentru tratamente balneare, dar și de cei care doresc să se bucure de aerul curat și de peisajul pitoresc. De asemenea, în zonă se află spații verzi amenajate, locuri de joacă pentru copii și facilități pentru organizarea unor evenimente recreative.','images/parc_amara.jpg'),
@@ -882,7 +882,7 @@ INSERT INTO locuri_vizitat_statb (orase_id, nume, descriere, imagine) VALUES
 -- pagina restaurante_statb
 CREATE TABLE restaurante_statb (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    orase_id INT NOT NULL,
+    statb_id INT NOT NULL,
     nume VARCHAR(255) NOT NULL,
     adresa TEXT NOT NULL,
     numar_telefon VARCHAR(20) NOT NULL,
@@ -893,10 +893,10 @@ CREATE TABLE restaurante_statb (
     meniu TEXT,
     imagine VARCHAR(255),
     progr TEXT NOT NULL,
-    FOREIGN KEY (orase_id) REFERENCES orase(id) ON DELETE CASCADE
+    FOREIGN KEY (statb_id) REFERENCES statb(id) ON DELETE CASCADE
 );
 
-INSERT INTO restaurante_statb (orase_id, nume, adresa, numar_telefon, stele, website, descriere_lunga, facilitati, meniu, imagine, progr) VALUES
+INSERT INTO restaurante_statb (statb_id, nume, adresa, numar_telefon, stele, website, descriere_lunga, facilitati, meniu, imagine, progr) VALUES
 (1, 'Restaurant Lacul Sărat', 'Str. Ștrandului 5, Amara', '0234 567 890', 3, 'http://restaurantlaculamar.ro', 'Specialități românești lângă lac.', 'Terasă, WiFi', 'http://restaurantlaculamar.ro/meniu', 'https://example.com/img/amara1.jpg', 'Luni-Duminică: 11:00 - 22:00'),
 (1, 'Hanul Balnear', 'Bd. Amara Nord 12', '0234 512 345', 4, 'http://hanulbalnear.ro', 'Mâncare tradițională în stil rustic.', 'Parcare, Livrare', 'http://hanulbalnear.ro/meniu', 'https://example.com/img/amara2.jpg', 'Luni-Duminică: 12:00 - 23:00'),
 (2, 'Terasa Termală', 'Str. Principală 10, Băile Călacea', '0256 888 777', 3, 'http://terasatermala.ro', 'Preparate locale și băuturi naturale.', 'Terasă, Muzică live', 'http://terasatermala.ro/meniu', 'https://example.com/img/calacea1.jpg', 'Luni-Duminică: 12:00 - 21:00'),
@@ -971,7 +971,7 @@ CREATE TABLE detalii_statl (
     orase_id INT NOT NULL,
     descriere_lunga TEXT NOT NULL,
     galerie_foto TEXT NOT NULL,
-    FOREIGN KEY (orase_id) REFERENCES statb(id) ON DELETE CASCADE
+    FOREIGN KEY (orase_id) REFERENCES statl(id) ON DELETE CASCADE
 );
 
 INSERT INTO detalii_statl (orase_id, descriere_lunga, galerie_foto) VALUES
@@ -991,21 +991,21 @@ INSERT INTO detalii_statl (orase_id, descriere_lunga, galerie_foto) VALUES
 (14, 'Techirghiol este o stațiune renumită pentru lacul său cu proprietăți terapeutice și pentru tratamentele cu nămol sapropelic. Este frecventată pentru beneficiile sale asupra sănătății și pentru atmosfera calmă.', 'images/techirghiol1.jpg, images/techirghiol2.jpg, images/techirghiol3.jpg, images/techirghiol4.jpg'),
 (15, 'Gura Portiței este un paradis sălbatic între Marea Neagră și Delta Dunării, accesibil doar cu barca. Este alegerea perfectă pentru iubitorii de natură, liniște și izolare, oferind o experiență rustică autentică.', 'images/gura_portitei1.jpg, images/gura_portitei2.jpg, images/gura_portitei3.jpg, images/gura_portitei4.jpg'),
 (16, 'Plaja Tuzla este o plajă ascunsă, apreciată pentru peisajele sale autentice și atmosfera liniștită. Este ideală pentru turiști care caută un loc retras, ferit de aglomerație, cu un aer boem.', 'images/tuzla1.jpg, images/tuzla2.jpg, images/tuzla3.jpg, images/tuzla4.jpg'),
-(17, 'Plaja Corbu este una dintre cele mai sălbatice și protejate zone de litoral, parte a rezervației Deltei. Este ideală pentru camping, fotografie de natură și vacanțe eco. Accesul este limitat, pentru a proteja biodiversitatea.', 'images/corbu1.jpg, images/corbu2.jpg, images/corbu3.jpg, images/corbu4.jpg'),
+(17, 'Plaja Corbu este una dintre cele mai sălbatice și protejate zone de litoral, parte a rezervației Deltei. Este ideală pentru camping, fotografie de natură și vacanțe eco. Accesul este limitat, pentru a proteja biodiversitatea.', 'images/corbu1.jpg, images/corbu2.jpg, images/corbu3.jpg, images/corbu4.jpg');
 
 
 
 -- pagina locuri_vizitat_statl
-CREATE TABLE locuri_vizitat_statb (
+CREATE TABLE locuri_vizitat_statl (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    orase_id INT NOT NULL,
+    statl_id INT NOT NULL,
     nume VARCHAR(150) NOT NULL,
     descriere TEXT NOT NULL,
     imagine VARCHAR(255),
-    FOREIGN KEY (orase_id) REFERENCES statb(id) ON DELETE CASCADE
+    FOREIGN KEY (statl_id) REFERENCES statl(id) ON DELETE CASCADE
 );
 
-INSERT INTO locuri_vizitat_statl (orase_id, nume, descriere, imagine) VALUES
+INSERT INTO locuri_vizitat_statl (statl_id, nume, descriere, imagine) VALUES
 (1, 'Epava Evangelia', 'Un simbol impresionant al stațiunii Costinești, epava navei Evangelia, eșuată în anii 1960, continuă să fascineze turiștii și fotografii de pretutindeni. Ruginită și măreață, proiectată pe fundalul apusurilor dramatice, epava spune o poveste misterioasă despre trecutul litoralului românesc.', 'images/epava_evangelia.jpg'),
 (1, 'Festivalul Beach, Please!', 'Unul dintre cele mai vibrante evenimente estivale din România, Beach, Please! adună anual mii de tineri și artiști renumiți la Costinești. Cu scene spectaculoase, show-uri de lumini, artificii și muzică live de cea mai bună calitate, festivalul redefinește spiritul verii la malul mării.', 'images/beach_please.jpg'),
 (1, 'Obeliscul Costinești', 'Obeliscul este inima simbolică a Costineștiului, un punct de reper pentru turiști și localnici deopotrivă. Amplasat direct pe plajă, acesta marchează întâlniri, începuturi de aventuri estivale și sesiuni nesfârșite de fotografii cu marea în fundal.', 'images/obelisc_costinesti.jpg'),
@@ -1020,31 +1020,31 @@ INSERT INTO locuri_vizitat_statl (orase_id, nume, descriere, imagine) VALUES
 (2, 'Cazino Mamaia', 'Cazino Mamaia este un simbol arhitectural al litoralului românesc, amintind de epoca de aur a turismului de la Marea Neagră. Elegant și impunător, cazinoul reprezintă un reper istoric și cultural important al stațiunii.', 'images/cazino_mamaia.jpg'),
 (2, 'Parcul de Distracții Mamaia', 'Parcul de Distracții din Mamaia oferă o gamă variată de atracții pentru toate vârstele. De la carusele și montagne russe la jocuri interactive, parcul este locul perfect pentru distracție în familie.', 'images/parc_distractii_mamaia.jpg'),
 (2, 'Plaja Mamaia', 'Plaja Mamaia se întinde pe kilometri întregi de nisip fin și ape cristaline. Este locul ideal pentru relaxare, sporturi nautice sau petrecerea timpului liber alături de familie și prieteni.', 'images/plaja_mamaia.jpg'),
-(3, 'Biserica cu Lună', 'Un monument istoric emblematic al Eforiei Nord, Biserica cu Lună este cunoscută pentru mecanismul său astronomic unic. Este un loc de cult și un punct de atracție turistică important.', 'images/biserica_luna.jpg'),
-(3, 'Baza de tratament Eforie Nord', 'Renumită pentru terapiile cu nămol sapropelic, baza de tratament din Eforie Nord atrage anual mii de vizitatori pentru refacere și relaxare.', 'images/tratament_eforie_nord.jpg'),
-(3, 'Portul turistic Belona', 'Portul Belona oferă excursii cu barca, sporturi nautice și peisaje deosebite asupra falezei.', 'images/port_belona.jpg'),
-(3, 'Parcul de distracții Eforie', 'Un parc de distracții sezonier, cu carusele și jocuri pentru copii și adulți.', 'images/parc_distractii_eforie.jpg'),
-(3, 'Faleza Eforie Nord', 'Faleza oferă acces facil la plajă, restaurante și magazine.', 'images/faleza_eforienord.jpg'),
-(4, 'Faleza Eforie Sud', 'O plimbare pe faleza stațiunii Eforie Sud oferă peisaje superbe asupra mării și acces la mici plaje retrase.', 'images/faleza_eforie_sud.jpg'),
-(4, 'Biserica Sf. Mina', 'O biserică de lemn cu arhitectură tradițională, loc de liniște și rugăciune pentru turiști.', 'images/biserica_mina.jpg'),
-(4, 'Parcul Central', 'Zonă verde cu alei și bănci pentru relaxare, în centrul stațiunii.', 'images/parc_eforiesud.jpg'),
-(5, 'Lacul Neptun', 'Lacul Neptun, înconjurat de vegetație, este perfect pentru plimbări relaxante și activități în aer liber.', 'images/lacul_neptun.jpg'),
-(5, 'Casa Scriitorilor', 'Complex cultural cu tradiție, frecventat de marii scriitori români ai secolului XX.', 'images/casa_scriitorilor.jpg'),
-(5, 'Grădina cu gânduri', 'Loc artistic în aer liber cu sculpturi și citate inspiratoare.', 'images/gradina_ganduri_neptun.jpg'),
-(6, 'Pădurea Comorova', 'Situată în apropierea stațiunii Olimp, pădurea Comorova oferă o oază de răcoare și liniște, ideală pentru drumeții și picnicuri.', 'images/padurea_comorova.jpg'),
-(6, 'Cinematograful de vară Olimp', 'Un spațiu cultural în aer liber, dedicat proiecțiilor de film în serile de vară.', 'images/cinematograf_olimp.jpg'),
-(6, 'Plaja Olimp', 'Cunoscută pentru peisajul natural și intimitatea oferită turiștilor.', 'images/plaja_olimp.jpg'),
-(6, 'Faleza Olimp', 'Plimbări relaxante printre hoteluri și restaurante de lux.', 'images/faleza_olimp.jpg'),
-(7, 'Stuf Vama Veche', 'Un bar iconic pe plajă, Stuf este locul de întâlnire pentru iubitorii de muzică live și atmosferă liberă, specifică Vămii.', 'images/stuf_vama.jpg'),
-(7, 'Campingul Vama Veche', 'Experiență boemă autentică la cort, chiar pe malul mării.', 'images/camping_vama.jpg'),
-(7, 'Stânca libertății', 'Loc simbolic, unde se organizează concerte neoficiale și se reunesc tinerii.', 'images/rock_vama.jpg'),
-(8, 'Lacul Tismana', 'Aflat aproape de stațiunea Jupiter, acest mic lac este un colț natural ideal pentru relaxare și pescuit.', 'images/lac_jupiter.jpg'),
-(8, 'Luna Park Jupiter', 'Parc de distracții sezonier, popular printre familiile cu copii.', 'images/luna_park_jupiter.jpg'),
-(8, 'Parcul central Jupiter', 'Loc de joacă și zonă verde în centrul stațiunii.', 'images/parc_jupiter.jpg'),
-(9, 'Grădina de vară Venus', 'Loc ideal pentru proiecții de film și spectacole în aer liber, grădina de vară din Venus completează serile de vacanță cu momente culturale.', 'images/gradina_venus.jpg'),
-(9, 'Fântânile arteziene Venus', 'Fântâni colorate care luminează centrul stațiunii în serile de vară.', 'images/fantani_venus.jpg'),
-(9, 'Bazarul Venus', 'Mic centru comercial pentru suveniruri și produse locale.', 'images/bazar_venus.jpg'),
-(9, 'Plaja Venus', 'Plajă cu nisip fin și acces facil pentru familii.', 'images/plaja_venus.jpg'),
+(3, 'Biserica cu Lună', 'Un monument istoric de referință din Eforie Nord, Biserica cu Lună impresionează prin mecanismul său astronomic unic, care indică fazele lunii. Construită în stil neoclasic, biserica emană o atmosferă de liniște și spiritualitate. Este nu doar un loc de cult activ, ci și un obiectiv turistic de neratat pentru pasionații de arhitectură și istorie.', 'images/biserica_luna.jpg'),
+(3, 'Baza de tratament Eforie Nord', 'Cunoscută în toată țara pentru terapiile sale eficiente, Baza de tratament Eforie Nord utilizează nămolul sapropelic extras din Lacul Techirghiol. Aici sunt oferite programe de recuperare, relaxare și îngrijire corporală, într-un cadru modernizat și profesionist. Mii de turiști aleg anual să se refacă sau să prevină afecțiuni diverse, beneficiind de puterea naturală a nămolului și apei sărate.', 'images/tratament_eforie_nord.jpg'),
+(3, 'Portul turistic Belona', 'Portul Belona este un loc animat, unde marea întâlnește distracția și aventura. De aici pleacă excursii cu barca spre larg, sporturile nautice sunt la ele acasă, iar faleza oferă priveliști spectaculoase. Este locul perfect pentru o zi de explorare sau pentru un apus de neuitat.', 'images/port_belona.jpg'),
+(3, 'Parcul de distracții Eforie', 'Parcul de distracții sezonier din Eforie Nord aduce zâmbete și bucurie turiștilor de toate vârstele. Cu carusele colorate, jocuri de noroc și atracții pentru copii și adulți, locul prinde viață mai ales seara. Atmosfera vibrantă și muzica veselă creează amintiri de neuitat în vacanțele de vară.', 'images/parc_distractii_eforie.jpg'),
+(3, 'Faleza Eforie Nord', 'Faleza Eforiei Nord este un loc emblematic pentru plimbări la răsărit sau la apus, cu acces direct către plajă, restaurante cochete și magazine de suveniruri. De-a lungul falezei, turiștii pot admira marea în toată splendoarea ei, în timp ce se bucură de aerul sărat și atmosfera relaxată. O destinație ideală pentru relaxare și socializare.', 'images/faleza_eforienord.jpg'),
+(4, 'Faleza Eforie Sud', 'Faleza din Eforie Sud oferă priveliști impresionante asupra mării, mai ales în timpul răsăritului. Este o zonă ideală pentru plimbări liniștite, cu acces spre plaje mai retrase și mai puțin aglomerate. Atmosfera calmă și frumusețea naturală a locului creează un decor perfect pentru momente de relaxare.', 'images/faleza_eforie_sud.jpg'),
+(4, 'Biserica Sf. Mina', 'Ascunsă între verdeață, Biserica Sf. Mina din Eforie Sud este construită din lemn, în stil tradițional românesc. Lăcașul de cult oferă turiștilor și localnicilor un spațiu de reculegere, liniște și spiritualitate. Simplitatea și frumusețea arhitecturii sale transmit o stare de pace sufletească.', 'images/biserica_mina.jpg'),
+(4, 'Parcul Central', 'Situat în inima stațiunii Eforie Sud, Parcul Central este o oază de verdeață și răcoare. Cu alei umbroase, bănci confortabile și spații de joacă pentru copii, parcul este ideal pentru plimbări relaxante sau pentru momente de respiro în mijlocul naturii. Este locul preferat de familii și turiști în căutare de liniște.', 'images/parc_eforiesud.jpg'),
+(5, 'Lacul Neptun', 'Încadrat de vegetație luxuriantă, Lacul Neptun este locul perfect pentru plimbări romantice și momente de liniște în mijlocul naturii. Apele sale calme reflectă cerul senin și vegetația din jur, creând un tablou de o frumusețe rară. Este ideal pentru activități de agrement precum plimbări cu barca sau pescuit.', 'images/lacul_neptun.jpg'),
+(5, 'Casa Scriitorilor', 'Casa Scriitorilor din Neptun este un complex cultural emblematic, cu o istorie bogată. Aici, marii scriitori ai literaturii române, precum Marin Preda sau Nichita Stănescu, au găsit inspirație pentru creațiile lor. Atmosfera boemă și încărcătura culturală fac din acest loc o destinație fascinantă pentru iubitorii de literatură și istorie.', 'images/casa_scriitorilor.jpg'),
+(5, 'Grădina cu gânduri', 'Grădina cu gânduri din Neptun este un spațiu artistic unic în aer liber, unde sculpturile moderne și citatele inspiraționale se împletesc cu natura. Vizitatorii sunt invitați să se plimbe printre operele de artă și să descopere mesaje care îndeamnă la reflecție și inspirație. Este un loc perfect pentru cei care caută liniște, creativitate și energie pozitivă.', 'images/gradina_ganduri_neptun.jpg'),
+(6, 'Pădurea Comorova', 'Situată în apropierea stațiunii Olimp, Pădurea Comorova este un loc de refugiu perfect pentru zilele toride de vară. Aici, turiștii pot descoperi poteci umbrite, ideale pentru plimbări relaxante, drumeții ușoare sau picnicuri în aer liber. Aerul răcoros și liniștea pădurii creează o atmosferă de evadare totală din agitația stațiunilor litorale.', 'images/padurea_comorova.jpg'),
+(6, 'Cinematograful de vară Olimp', 'În serile călduroase, cinematograful de vară din Olimp devine centrul cultural al stațiunii. Sub cerul liber, vizitatorii se pot bucura de filme clasice sau premiere recente, într-o atmosferă relaxată și prietenoasă. Proiecțiile sunt însoțite adesea de sunetul mării și adierea răcoroasă a brizei.', 'images/cinematograf_olimp.jpg'),
+(6, 'Plaja Olimp', 'Plaja Olimp impresionează prin peisajele sale naturale și ambianța liniștită, perfectă pentru turiștii care caută relaxare departe de aglomerație. Nisipul fin și marea curată creează un cadru ideal pentru zile lungi de plajă și băi de soare. Intimitatea oferită de această plajă atrage în special familiile și cuplurile.', 'images/plaja_olimp.jpg'),
+(6, 'Faleza Olimp', 'Faleza din Olimp invită turiștii la plimbări lungi, cu vedere spre marea nesfârșită. Printre hoteluri elegante și restaurante rafinate, vizitatorii pot descoperi locuri de relaxare, terase primitoare și colțuri pitorești pentru fotografii memorabile. Este un traseu ideal pentru serile de vară.', 'images/faleza_olimp.jpg'),
+(7, 'Stuf Vama Veche', 'Barul Stuf din Vama Veche este un simbol al libertății și spiritului nonconformist al stațiunii. Locul reunește iubitorii de muzică live, nopți albe și atmosferă boemă, într-un decor rustic, direct pe plajă. De aici pornesc cele mai memorabile nopți de vară, pline de muzică și voie bună.', 'images/stuf_vama.jpg'),
+(7, 'Campingul Vama Veche', 'Campingul din Vama Veche oferă o experiență autentică de cazare chiar pe malul mării. Corturile așezate sub cerul înstelat și sunetul valurilor creează un decor unic, preferat de tinerii aventurieri și de iubitorii de natură. Atmosfera de libertate totală și comunitatea prietenoasă fac din acest loc un reper al spiritului vămii.', 'images/camping_vama.jpg'),
+(7, 'Stânca libertății', 'Stânca libertății din Vama Veche este mai mult decât un simplu loc – este un simbol al libertății de exprimare și al culturii alternative. Aici se adună tineri din toate colțurile țării pentru concerte spontane, poezie, focuri de tabără și întâlniri sub clar de lună. Energia locului este contagioasă și plină de viață.', 'images/rock_vama.jpg'),
+(8, 'Lacul Tismana', 'Situat aproape de stațiunea Jupiter, Lacul Tismana este un refugiu natural, ideal pentru relaxare și activități în aer liber. Marginit de vegetație densă, lacul este perfect pentru pescuit sau pentru plimbări liniștite pe mal. Atmosfera sa liniștită oferă un contrast plăcut față de agitația plajelor.', 'images/lac_jupiter.jpg'),
+(8, 'Luna Park Jupiter', 'Luna Park din Jupiter este locul preferat al familiilor cu copii în serile de vară. Parcul de distracții oferă carusele colorate, jocuri interactive și spectacole luminoase care transformă serile într-un adevărat festival de veselie. Este un spațiu plin de energie pozitivă și bună dispoziție.', 'images/luna_park_jupiter.jpg'),
+(8, 'Parcul central Jupiter', 'În centrul stațiunii Jupiter, parcul verde oferă un spațiu plăcut pentru plimbări, relaxare și socializare. Cu zone de joacă pentru copii și bănci umbrite pentru odihnă, parcul este un punct de întâlnire atât pentru localnici, cât și pentru turiști. Este locul ideal pentru o pauză de liniște între sesiuni de plajă.', 'images/parc_jupiter.jpg'),
+(9, 'Grădina de vară Venus', 'Grădina de vară din Venus completează atmosfera de vacanță cu seri de filme și spectacole artistice în aer liber. Sub cerul înstelat, turiștii pot urmări proiecții cinematografice sau concerte într-un cadru relaxant și prietenos. Este un loc unde cultura și relaxarea se îmbină perfect.', 'images/gradina_venus.jpg'),
+(9, 'Fântânile arteziene Venus', 'Fântânile arteziene din centrul stațiunii Venus devin un adevărat spectacol vizual în serile de vară. Jocurile de lumini și apă creează o atmosferă magică, atrăgând turiștii pentru fotografii și momente de relaxare. Este un punct de atracție animat și plin de farmec.', 'images/fantani_venus.jpg'),
+(9, 'Bazarul Venus', 'Bazarul din Venus este locul ideal pentru cumpărături de suveniruri, produse locale și accesorii de plajă. Atmosfera animată și varietatea produselor îl transformă într-un punct de atracție pentru toți turiștii. Fiecare vizită în bazar aduce descoperiri interesante și amintiri autentice de vacanță.', 'images/bazar_venus.jpg'),
+(9, 'Plaja Venus', 'Plaja Venus se remarcă prin nisipul fin, intrarea lină în apă și atmosfera primitoare, perfectă pentru familii cu copii. Serviciile de plajă sunt bine organizate, iar apropierea de restaurante și terase completează experiența de relaxare. Este una dintre cele mai apreciate plaje pentru vacanțe confortabile și sigure.', 'images/plaja_venus.jpg'),
 (10, 'Plaja Adulților Saturn', 'Plaja Saturn oferă zone speciale pentru relaxare liniștită, departe de aglomerația obișnuită a litoralului.', 'images/plaja_saturn.jpg'),
 (10, 'Pontonul Saturn', 'Loc liniștit pentru pescuit și relaxare, cu acces direct în mare.', 'images/ponton_saturn.jpg'),
 (11, 'Cetatea Callatis', 'Rămășițele cetății antice Callatis din Mangalia sunt un punct de atracție culturală de neratat pentru pasionații de istorie.', 'images/cetate_callatis.jpg'),
@@ -1057,43 +1057,118 @@ INSERT INTO locuri_vizitat_statl (orase_id, nume, descriere, imagine) VALUES
 (14, 'Sanatoriul Techirghiol', 'Una dintre cele mai cunoscute instituții de tratament din România, Sanatoriul Techirghiol oferă servicii balneare de înaltă calitate.', 'images/sanatoriu_techirghiol.jpg'),
 (14, 'Mănăstirea Sf. Maria', 'Un important centru spiritual și de tratament balnear, aflat pe malul lacului Techirghiol.', 'images/manastire_techirghiol.jpg'),
 (14, 'Lacul Techirghiol', 'Cunoscut pentru proprietățile curative ale apei sărate și nămolului.', 'images/lac_techirghiol.jpg'),
-(15, 'Laguna Gura Portiței', 'Laguna este un habitat natural spectaculos unde pot fi observate păsări rare și vegetație specifică Deltei.', 'images/laguna_gura_portitei.jpg'),
-(15, 'Pontonul Gura Portiței', 'Ponton de observație între mare și lagună, ideal pentru birdwatching și fotografii.', 'images/ponton_gura_portitei.jpg'),
-(15, 'Campingul Gura Portiței', 'Experiență rustică de cazare între mare și deltă.', 'images/camping_gura.jpg'),
-(16, 'Faleza Tuzla', 'O zonă puțin cunoscută dar spectaculoasă, faleza de la Tuzla oferă un punct de belvedere superb asupra mării.', 'images/faleza_tuzla.jpg'),
-(16, 'Festivaluri pe plaja Tuzla', 'Festivaluri alternative de muzică și artă organizate într-un cadru natural și relaxant.', 'images/festival_tuzla.jpg'),
-(16, 'Festivaluri alternative', 'Evenimente culturale și muzicale organizate direct pe plajă.', 'images/festival_tuzla.jpg'),
-(17, 'Rezervația Corbu', 'Parte din rezervația Biosferei Delta Dunării, plaja Corbu este protejată și oferă un peisaj natural unic și sălbatic.', 'images/rezervatia_corbu.jpg'),
-(17, 'Zona de observare păsări Corbu', 'Parte a Rezervației Biosferei Delta Dunării, zonă protejată cu numeroase specii de păsări.', 'images/birdwatching_corbu.jpg'),
-(17, 'Zona ecologică Corbu', 'Plajă protejată, ideală pentru ecoturism și birdwatching.', 'images/eco_corbu.jpg');
+(15, 'Laguna Gura Portiței', 'Laguna de la Gura Portiței este un habitat natural spectaculos, unde cerul întâlnește luciul apei într-un dans al reflexiilor. Aici pot fi observate păsări rare, unele dintre ele fiind specii protejate, iar vegetația specifică Deltei oferă un tablou de o frumusețe sălbatică. Este locul ideal pentru iubitorii de natură, liniște și fotografie.', 'images/laguna_gura_portitei.jpg'),
+(15, 'Pontonul Gura Portiței', 'Pontonul din Gura Portiței reprezintă un punct strategic de observație, situat între mare și lagună. De aici, turiștii pot admira apusuri spectaculoase, pot observa păsări rare sau pot surprinde cadre memorabile pentru albumul de vacanță. Locul emană un farmec rustic și autentic.', 'images/ponton_gura_portitei.jpg'),
+(15, 'Campingul Gura Portiței', 'Campingul de la Gura Portiței oferă o experiență rustică autentică, între apele liniștite ale lagunei și valurile mării. Aici te poți deconecta complet de agitația urbană și te poți bucura de nopți înstelate, aer sărat și cântecul naturii. O alegere ideală pentru aventurieri și iubitorii de libertate.', 'images/camping_gura.jpg'),
+(16, 'Faleza Tuzla', 'Faleza sălbatică de la Tuzla este una dintre cele mai puțin cunoscute bijuterii de pe litoralul românesc. Aici, stâncile abrupte se scufundă în mare, oferind priveliști dramatice și momente de liniște absolută. Perfectă pentru plimbări romantice sau sesiuni foto, zona rămâne o destinație aparte pentru cei care caută autenticitate.', 'images/faleza_tuzla.jpg'),
+(16, 'Festivaluri pe plaja Tuzla', 'Pe plaja de la Tuzla, vara prinde viață prin festivaluri alternative de muzică și artă. Sub cerul liber și înconjurați de natură, participanții se bucură de concerte intime, instalații artistice și ateliere creative. Atmosfera este relaxată, autentică, departe de agitația marilor stațiuni.', 'images/festival_tuzla.jpg'),
+(16, 'Festivaluri alternative', 'Festivalurile organizate pe plaja Tuzla transformă țărmul într-o scenă vibrantă de cultură alternativă. Artiști, trupe indie și DJ aduc un suflu boem locului, iar participanții experimentează libertatea totală, în sunetul valurilor și al muzicii live.', 'images/festival_tuzla.jpg'),
+(17, 'Rezervația Corbu', 'Rezervația de la Corbu face parte din inima Biosferei Delta Dunării și păstrează farmecul litoralului sălbatic. Aici, nisipul fin se îmbină cu peisaje naturale intacte, iar liniștea este întreruptă doar de vânt și ciripitul păsărilor. Este un loc de refugiu perfect pentru cei care caută o conexiune autentică cu natura.', 'images/rezervatia_corbu.jpg'),
+(17, 'Zona de observare păsări Corbu', 'Zona de birdwatching de la Corbu este un paradis pentru ornitologi și iubitorii de natură. Cu puțină răbdare, pot fi observate numeroase specii rare, în habitatul lor natural. Un binoclu și o inimă deschisă sunt tot ce ai nevoie pentru a trăi momente magice.', 'images/birdwatching_corbu.jpg'),
+(17, 'Zona ecologică Corbu', 'Zona ecologică de la Corbu păstrează spiritul pur al litoralului nedomesticit. Este locul unde se promovează ecoturismul, respectul față de natură și armonia între om și mediul înconjurător. O experiență de neuitat pentru cei care își doresc liniște, autenticitate și frumusețe naturală.', 'images/eco_corbu.jpg');
 
 -- pagina hoteluri statl
+CREATE TABLE hoteluri_statl (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    statl_id INT NOT NULL,
+    nume VARCHAR(255) NOT NULL,
+    adresa TEXT NOT NULL,
+    numar_telefon VARCHAR(20) NOT NULL,
+    stele INT CHECK (stele BETWEEN 1 AND 5),
+    website VARCHAR(255),
+    descriere_lunga TEXT NOT NULL,
+    facilitati TEXT NOT NULL,
+    camere TEXT NOT NULL,
+    pret DECIMAL(10, 2) NOT NULL,
+    imagine VARCHAR(255),
+    FOREIGN KEY (statl_id) REFERENCES statl(id) ON DELETE CASCADE
+);
+
+INSERT INTO hoteluri_statl (statl_id, nume, adresa, numar_telefon, stele, website, descriere_lunga, facilitati, camere, pret, imagine) VALUES
+(1, 'Hotel Forum Costinești', 'Str. Tineretului nr. 2, Costinești', '+40 721 234 567', 3, 'www.hotelforumcostinesti.ro', 'Hotel Forum este situat chiar pe malul mării, oferind o priveliște spectaculoasă și acces direct la plajă. Este preferat de tineri pentru atmosfera vibrantă și proximitatea față de principalele atracții ale stațiunii.', 'Wi-Fi gratuit, bar pe plajă, restaurant, parcare proprie', 'Camere duble, apartamente cu vedere la mare', 350.00, 'images/forum_costinesti.jpg'),
+(1, 'Vila Costinești', 'Strada Tineretului 5, Costinești', '+40 723 456 789', 3, 'www.vilacostinesti.ro', 'Vila Costinești oferă cazare confortabilă la câțiva pași de plajă, ideală pentru familii și tineri dornici de distracție în stațiunea tineretului.', 'Wi-Fi gratuit, grădină, terasă, parcare privată', 'Camere duble, camere triple', 180.00, 'images/vila_costinesti.jpg'),
+(2, 'Hotel Iaki Mamaia', 'Bd. Mamaia nr. 2, Mamaia', '+40 241 831 025', 4, 'www.hoteliaki.ro', 'Hotelul Iaki, deținut de celebrul Gheorghe Hagi, oferă servicii de top la doar câțiva pași de plajă. Cu un centru SPA modern și restaurante elegante, hotelul promite un sejur de neuitat.', 'Piscină interioară, spa, restaurant gourmet, sală de conferințe', 'Camere executive, suite de lux', 750.00, 'images/iaki_mamaia.jpg'),
+(2, 'Hotel Opera Mamaia Nord', 'Str. Promenada nr. 5, Năvodari', '+40 729 191 191', 4, 'www.hotelopera.ro', 'Hotel Opera, situat în zona exclusivistă Mamaia Nord, oferă o combinație perfectă de rafinament și confort. Locația sa premium oferă acces direct la plajă și restaurante de lux.', 'Piscină infinity, bar pe plajă, centru fitness', 'Camere elegante, apartamente VIP', 780.00, 'images/opera_navodari.jpg'),
+(3, 'Hotel Mirage Eforie Nord', 'Bd. Republicii nr. 45, Eforie Nord', '+40 341 141 141', 4, 'www.hotelmirage.ro', 'Hotel Mirage este renumit pentru baza sa de tratament balnear și centrul SPA modern. Ideal pentru relaxare și refacere, hotelul este situat aproape de faleza Eforie Nord.', 'Centru wellness, tratamente balneare, piscină, parcare', 'Camere standard, camere cu vedere la mare', 420.00, 'images/mirage_eforienord.jpg'),
+(3, 'Hotel Grand Eforie Nord', 'Str. Republicii nr. 45, Eforie Nord', '+40 341 432 100', 4, 'www.hotelgrandeforienord.ro', 'Situat aproape de centrul stațiunii, Hotel Grand oferă cazare modernă, bază de tratament și acces rapid la plajă. Este ideal pentru familii și turiști aflați în căutarea relaxării.', 'Bază de tratament, restaurant, spa, loc de joacă pentru copii', 'Camere standard, apartamente spa', 420.00, 'images/hotel_grand_eforie.jpg'),
+(4, 'Hotel Cosmos Eforie Sud', 'Str. Falezei nr. 8, Eforie Sud', '+40 730 456 789', 2, NULL, 'Hotel Cosmos oferă cazare accesibilă în apropierea plajei, ideal pentru familii și grupuri de prieteni. Stațiunea Eforie Sud păstrează farmecul stațiunilor clasice de litoral.', 'Restaurant, Wi-Fi gratuit, terasă de vară', 'Camere duble, camere triple', 180.00, 'images/cosmos_eforiesud.jpg'),
+(4, 'Hotel Anca Eforie Sud', 'Str. Dr. Cantacuzino nr. 12, Eforie Sud', '+40 241 748 777', 3, 'www.hotelanca.ro', 'Hotel Anca oferă confort accesibil în apropierea falezei din Eforie Sud. Locația sa liniștită și grădina proprie îl fac perfect pentru familii sau cupluri în căutare de relaxare.', 'Grădină, terasă, restaurant tradițional, Wi-Fi gratuit', 'Camere duble standard', 260.00, 'images/hotel_anca_eforie.jpg'),
+(5, 'Hotel Cocor Neptun', 'Str. Trandafirilor nr. 6, Neptun', '+40 241 701 111', 4, 'www.hotelcocor.ro', 'Hotel Cocor combină confortul de patru stele cu servicii balneare de înaltă calitate. Amplasat într-o zonă liniștită din Neptun, hotelul este ideal pentru relaxare completă.', 'Centru SPA, piscină exterioară, restaurant internațional', 'Camere superioare, apartamente spațioase', 600.00, 'images/cocor_neptun.jpg'),
+(5, 'Hotel Doina Neptun', 'Aleea Steagurilor nr. 2, Neptun', '+40 241 731 111', 3, 'www.hoteldoinaneptun.ro', 'Amplasat într-o zonă verde, Hotel Doina oferă acces facil la plaja Neptun și la complexul balnear. Este potrivit pentru cei care doresc liniște și servicii de calitate.', 'Piscină exterioară, restaurant, centru tratament', 'Camere duble, suite', 370.00, 'images/hotel_doina_neptun.jpg'),
+(6, 'Hotel Pam Beach Olimp', 'Str. Olimp nr. 1, Olimp', '+40 732 312 111', 3, 'www.pambeach.ro', 'Hotel Pam Beach oferă un sejur plin de relaxare, la câțiva pași de plajele liniștite din Olimp. Cu servicii complete și atmosferă familială, este perfect pentru vacanțe relaxante.', 'Piscină, terasă, parcare gratuită, bar', 'Camere duble standard, apartamente familiale', 310.00, 'images/pambeach_olimp.jpg'),
+(6, 'Hotel Majestic Olimp', 'Str. Olimp, Olimp', '+40 241 742 888', 4, 'www.hotelmajesticolimp.ro', 'Hotel Majestic este ideal pentru vacanțe relaxante pe litoral. Amplasat într-un cadru natural, dispune de piscine, restaurante și multiple facilități de agrement.', 'Piscină, restaurant, bar, teren sportiv', 'Camere duble, apartamente', 450.00, 'images/hotel_majestic_olimp.jpg'),
+(7, 'Hotel Vama Veche', 'Str. Falezei nr. 1, Vama Veche', '+40 241 123 456', 3, 'www.hotelvamaveche.ro', 'Hotel Vama Veche oferă cazare confortabilă în inima stațiunii, la câțiva pași de plajă. Este ideal pentru tineri și familii care doresc să se bucure de atmosfera vibrantă a Vămii.', 'Wi-Fi gratuit, restaurant, bar pe plajă', 'Camere duble, apartamente cu vedere la mare', 350.00, 'images/hotel_vama_veche.jpg'),
+(7, 'Hotel Jakuzzi Vama Veche', 'Str. Falezei nr. 14, Vama Veche', '+40 731 987 654', 3, 'www.hoteljakuzzi.ro', 'În inima Vămii, Hotel Jakuzzi oferă cazare modernă cu acces rapid la plajă și la atmosfera boemă a stațiunii. Perfect pentru cei care vor să combine relaxarea cu distracția.', 'Jacuzzi, bar de plajă, Wi-Fi gratuit', 'Camere duble, camere cu terasă', 400.00, 'images/jakuzzi_vama.jpg'),
+(9, 'Hotel Melodia Venus', 'Str. Dem Radulescu nr. 2, Venus', '+40 241 731 031', 4, 'www.hotelmelodia.ro', 'Hotel Melodia este un refugiu elegant în stațiunea Venus, oferind confort modern, servicii excelente și un ambient plin de verdeață. O alegere inspirată pentru familii și cupluri.', 'Piscină, spa, loc de joacă pentru copii, restaurant', 'Camere deluxe, apartamente familiale', 520.00, 'images/melodia_venus.jpg'),
+(9, 'Hotel Afrodita', 'Strada Dem Radulescu 12, Venus', '+40 241 123 456', 4, 'www.hotelafrodita.ro', 'Hotel Afrodita din Venus este o alegere perfectă pentru relaxare, cu servicii de top, camere elegante și acces direct la plajă.', 'Piscină, SPA, restaurant, plajă privată', 'Camere duble standard, apartamente', 450.00, 'images/hotel_afrodita.jpg'),
+(10, 'Hotel Cleopatra Saturn', 'Str. Greenport nr. 3, Saturn', '+40 241 752 425', 4, 'www.hotelcleopatra.ro', 'Hotel Cleopatra este cel mai modern hotel din Saturn, cu o impresionantă piscină cu apă termală și servicii de top. Se află la doar câteva minute de mers pe jos de plajă.', 'Piscină termală, centru SPA, restaurant internațional', 'Camere standard, suite premium', 580.00, 'images/cleopatra_saturn.jpg'),
+(10, 'Hotel Sirena', 'Strada Greenport 1, Saturn', '+40 241 654 321', 3, 'www.hotelsirena.ro', 'Hotel Sirena oferă o priveliște superbă asupra mării și servicii excelente, fiind ideal atât pentru familii cât și pentru cupluri.', 'Piscină exterioară, restaurant, loc de joacă pentru copii', 'Camere duble, camere familiale', 250.00, 'images/hotel_sirena.jpg'),
+(11, 'Hotel President Mangalia', 'Str. Teilor nr. 5, Mangalia', '+40 241 752 452', 4, 'www.hotelpresidentmangalia.ro', 'Amplasat aproape de portul turistic, Hotel President oferă servicii de 4 stele, ideal pentru vacanțe relaxante sau explorarea orașului istoric Mangalia.', 'Spa, restaurant, sală de conferințe, bar', 'Camere executive, apartamente business', 600.00, 'images/hotel_president_mangalia.jpg'),
+(11, 'Hotel New Belvedere Mangalia', 'Str. Portului nr. 1, Mangalia', '+40 729 500 600', 5, 'www.hotelnewbelvedere.ro', 'Hotel New Belvedere aduce luxul în stațiunea Mangalia, fiind situat chiar lângă portul turistic. Oferă servicii de cinci stele și priveliști spectaculoase asupra Mării Negre.', 'Piscină exterioară, centru wellness, restaurant gourmet', 'Camere deluxe, apartamente executive', 850.00, 'images/belvedere_mangalia.jpg'),
+(12, 'Hotel California', 'Strada Gala Galaction, Cap Aurora', '+40 241 730 725', 4, 'www.hotelcalifornia.ro', 'Hotel California din Cap Aurora este un complex modern, amplasat chiar pe malul mării, oferind camere cu vedere spectaculoasă la plajă. Ideal pentru vacanțe liniștite, hotelul combină confortul elegant cu serviciile excelente.', 'Piscină exterioară, plajă privată, restaurant, bar, sală de fitness', 'Camere duble standard, apartamente cu vedere la mare', 420.00, 'images/hotel_california.jpg'),
+(13, 'Hotel Sea Breeze Năvodari', 'Str. D6 nr. 12, Năvodari', '+40 724 567 123', 3, 'www.seabreezenavodari.ro', 'O alegere excelentă pentru familiile și tinerii dornici de distracție, Hotel Sea Breeze oferă acces rapid la plajele din Mamaia Nord și atmosfera vibrantă a zonei.', 'Restaurant, parcare, Wi-Fi gratuit', 'Camere duble, apartamente', 400.00, 'images/hotel_seabreeze_navodari.jpg'),
+(13, 'Hotel Marina', 'Bulevardul Mamaia Nord 99, Năvodari', '+40 724 987 654', 4, 'www.hotelmarina.ro', 'Hotel Marina din Năvodari este situat aproape de plajele liniștite din nordul stațiunii, fiind perfect pentru o vacanță relaxantă și confortabilă.', 'Restaurant, bar, terasă, Wi-Fi gratuit', 'Camere duble deluxe, apartamente de familie', 390.00, 'images/hotel_marina.jpg'),
+(14, 'Hotel Anina Techirghiol', 'Str. Ovidiu nr. 7, Techirghiol', '+40 241 735 123', 3, 'www.hotelanina.ro', 'Hotel Anina este alegerea perfectă pentru cei care vizitează Techirghiol pentru tratamente balneare. Cu servicii medicale specializate și facilități moderne, hotelul combină sănătatea cu relaxarea.', 'Tratament balnear, Wi-Fi, parcare, restaurant', 'Camere duble, camere pentru tratament', 280.00, 'images/anina_techirghiol.jpg'),
+(14, 'Hotel Techirghiol Spa', 'Str. Ovidiu nr. 1, Techirghiol', '+40 241 748 111', 4, 'www.hoteltechirghiolspa.ro', 'Cu acces la celebrul nămol sapropelic, Hotel Techirghiol Spa este locul ideal pentru tratamente de sănătate și relaxare. Oferă condiții moderne și un centru balnear complet.', 'Spa balnear, bază tratament, restaurant', 'Camere standard, suite tratament', 350.00, 'images/hotel_techirghiol_spa.jpg'),
+(15, 'Resort Gura Portiței', 'Gura Portiței, Delta Dunării', '+40 732 777 000', 3, 'www.guraportitei.ro', 'Un paradis ascuns între mare și deltă, Resort Gura Portiței oferă o experiență unică, departe de civilizație. Cazarea în bungalow-uri rustice sau vile elegante completează peisajele spectaculoase.', 'Restaurant pescăresc, excursii cu barca, activități nautice', 'Bungalow-uri tradiționale, camere cu vedere la lagună', 470.00, 'images/portita_resort.jpg'),
+(15, 'Pensiunea Laguna Gura Portiței', 'Sat Gura Portiței, Delta Dunării', '+40 729 999 888', 3, 'www.guraportitei.ro', 'Amplasată între mare și lagună, pensiunea oferă cazare rustică în mijlocul naturii sălbatice. Ideală pentru evadări liniștite și explorarea Deltei Dunării.', 'Restaurant pescăresc, bărci de agrement, excursii în deltă', 'Căsuțe tradiționale, camere rustice', 500.00, 'images/pensiune_laguna.jpg'),
+(16, 'Casa Tuzla Beach', 'Str. Mării nr. 1, Plaja Tuzla', '+40 730 888 888', 2, NULL, 'Casa Tuzla Beach este un mic hotel boutique, perfect pentru cei care caută liniștea și autenticitatea unei plaje mai puțin cunoscute. Atmosfera este prietenoasă, iar decorul natural oferă un refugiu perfect.', 'Terasa la mare, Wi-Fi, mic dejun inclus', 'Camere duble simple', 190.00, 'images/casa_tuzla.jpg'),
+(16, 'Camping Tuzla Beach', 'Plaja Tuzla, Constanța', '+40 755 432 101', 2, 'www.tuzlabeachcamp.ro', 'O experiență autentică de camping pe o plajă sălbatică, Camping Tuzla oferă corturi de închiriat, focuri de tabără și seri relaxante în natură.', 'Camping, beach bar, evenimente alternative', 'Corturi eco, locuri de campare', 150.00, 'images/camping_tuzla.jpg'),
+(17, 'Pensiunea Plaja Corbu', 'Str. Principală nr. 23, Plaja Corbu', '+40 722 345 678', 3, NULL, 'Pensiunea Plaja Corbu oferă cazare într-un cadru natural deosebit, la doar câțiva pași de plaja sălbatică Corbu. O alegere excelentă pentru iubitorii de natură și aventură.', 'Curte cu grătar, terasă, parcare gratuită', 'Camere duble, camere triple', 250.00, 'images/pensiunea_corbu.jpg'),
+(17, 'Eco Resort Corbu', 'Plaja Corbu, Constanța', '+40 758 123 321', 3, 'www.ecorezortcorbu.ro','Un resort ecologic integrat perfect în peisajul natural al plajei Corbu. Ideal pentru iubitorii de natură, liniște și activități eco.','Restaurant eco, biciclete de închiriat, tururi birdwatching', 'Bungalow-uri eco, camere simple', 420.00, 'images/eco_resort_corbu.jpg');
 
 
 
+-- pagina restaurante_statl
+CREATE TABLE restaurante_statl (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    statl_id INT NOT NULL,
+    nume VARCHAR(255) NOT NULL,
+    adresa TEXT NOT NULL,
+    numar_telefon VARCHAR(20) NOT NULL,
+    stele DECIMAL(2,1) NOT NULL,
+    website VARCHAR(255),
+    descriere_lunga TEXT NOT NULL,
+    facilitati TEXT NOT NULL,
+    meniu TEXT,
+    imagine VARCHAR(255),
+    progr TEXT NOT NULL,
+    FOREIGN KEY (statl_id) REFERENCES statl(id) ON DELETE CASCADE
+);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- pagina restaurante_statb
-
-
-
-
+INSERT INTO restaurante_statl (statl_id, nume, adresa, numar_telefon, stele, website, descriere_lunga, facilitati, meniu, imagine, progr) VALUES
+(1, 'Restaurant Tineretului', 'Strada Principală 5, Costinești', '+40 741 111 222', 3, 'www.tineretului.ro', 'Loc popular printre tineri, oferind preparate tradiționale și fast-food într-o atmosferă animată.', 'Wi-Fi, Terasă, Muzică live', 'Burgeri, Fripturi, Salate', 'images/restaurant_tineretului.jpg', '09:00 - 23:00'),
+(1, 'Pescăria Costinești', 'Strada Mării 10, Costinești', '+40 741 333 444', 4, 'www.pescariacostinesti.ro', 'Restaurant cu specific pescăresc, cu preparate din pește proaspăt și fructe de mare.', 'Terasă cu vedere la mare, Parcare', 'Pește la grătar, Midii, Ciorbă de pește', 'images/pescaria_costinesti.jpg', '11:00 - 22:00'),
+(2, 'Terasa Mamaia', 'Bulevardul Mamaia 23, Mamaia', '+40 742 555 666', 4, 'www.terasamamaia.ro', 'Terasa modernă situată aproape de plajă, perfectă pentru mese rapide sau cocktailuri.', 'Muzică live, Wi-Fi', 'Pizza, Paste, Cocktailuri', 'images/terasa_mamaia.jpg', '10:00 - 00:00'),
+(2, 'Restaurant Marina Bay', 'Bulevardul Mamaia Nord 45, Mamaia', '+40 742 777 888', 5, 'www.marinabay.ro', 'Restaurant elegant cu preparate fine dining și priveliște spre mare.', 'Salon VIP, Muzică live', 'Fructe de mare, Steakuri, Deserturi gourmet', 'images/marina_bay.jpg', '12:00 - 23:30'),
+(3, 'Restaurant Belona', 'Strada Belona 2, Eforie Nord', '+40 743 111 000', 4, 'www.restaurantbelona.ro', 'Restaurant situat pe faleză, renumit pentru preparatele tradiționale românești.', 'Terasă, Loc de joacă pentru copii', 'Ciorbă rădăuțeană, Sarmale, Tochitură', 'images/restaurant_belona.jpg', '08:00 - 23:00'),
+(3, 'Pescăria Veche', 'Strada Portului 15, Eforie Nord', '+40 743 123 456', 4, 'www.pescariaveche.ro', 'Loc rustic cu specialități de pește și fructe de mare.', 'Terasă acoperită, Muzică ambientală', 'Saramură de crap, Midii, Doradă la grătar', 'images/pescaria_veche.jpg', '11:00 - 22:00'),
+(4, 'Restaurant Plaja Sud', 'Faleza, Eforie Sud', '+40 744 222 111', 3, 'www.plajasud.ro', 'Restaurant pe plajă cu specific mediteranean.', 'Terasă mare, Bar', 'Salate mediteraneene, Fructe de mare', 'images/restaurant_plaja_sud.jpg', '10:00 - 23:00'),
+(4, 'Casa Veche', 'Strada Republicii 14, Eforie Sud', '+40 744 333 555', 4, 'www.casaveche.ro', 'Casă tradițională transformată în restaurant cu preparate românești și internaționale.', 'Curte interioară, Wi-Fi', 'Platouri tradiționale, Pui la jar', 'images/casa_veche.jpg', '09:00 - 22:00'),
+(5, 'Terasa Neptun', 'Strada Plajei 3, Neptun', '+40 745 666 777', 4, 'www.terasa-neptun.ro', 'Terasa de vară ideală pentru cine romantice aproape de mare.', 'Muzică live, Lounge', 'Pește grill, Burgeri gourmet', 'images/terasa_neptun.jpg', '12:00 - 00:00'),
+(5, 'Restaurant Insula', 'Lacul Neptun, Neptun', '+40 745 888 999', 5, 'www.restaurantinsula.ro', 'Restaurant exclusivist amplasat pe o insulă artificială în lacul Neptun.', 'Terasă panoramică, Muzică ambientală', 'Meniu internațional', 'images/restaurant_insula.jpg', '13:00 - 23:30'),
+(6, 'Restaurant Olimp', 'Strada Olimp 5, Olimp', '+40 746 222 333', 4, 'www.restaurantolimp.ro', 'Restaurant cu specific românesc și internațional, ideal pentru familii.', 'Terasă cu vedere la mare', 'Sarmale, Pește prăjit, Salate', 'images/restaurant_olimp.jpg', '08:00 - 22:00'),
+(6, 'Bar & Grill Riviera', 'Complex Riviera, Olimp', '+40 746 444 555', 3, 'www.rivieragrill.ro', 'Loc relaxant pe malul mării, specializat în grătare și băuturi tropicale.', 'Wi-Fi, Muzică ambientală', 'Burgeri, Fripturi', 'images/riviera_grill.jpg', '11:00 - 23:00'),
+(7, 'La Pirati', 'Strada Plajei 7, Vama Veche', '+40 747 111 333', 3, 'www.lapirati.ro', 'Restaurant boem cu decor marin, popular printre vamaioți.', 'Terasă rustică, Muzică live', 'Burgeri vegani, Midii, Cocktailuri', 'images/la_pirati.jpg', '10:00 - 02:00'),
+(7, 'Sandalandala Food', 'Camping Sandalandala, Vama Veche', '+40 747 555 777', 4, 'www.sandalandala.ro', 'Bucătărie rapidă și gustoasă în inima Vămii.', 'Muzică live, Camping friendly', 'Pizza, Salate, Grill', 'images/sandalandala_food.jpg', '09:00 - 01:00'),
+(9, 'Restaurant Venus Beach', 'Faleza Venus, Venus', '+40 748 222 444', 4, 'www.venusbeach.ro', 'Restaurant de lux cu vedere spectaculoasă asupra mării.', 'Plajă privată, Lounge bar', 'Pește, Sushi', 'images/venus_beach.jpg', '12:00 - 23:30'),
+(9, 'La Terasa Albă', 'Strada Venus 8, Venus', '+40 748 666 777', 3, 'www.terasaalba.ro', 'Loc relaxat pentru cine romantice și gustări de vară.', 'Terasă mare, Wi-Fi', 'Burgeri, Paste, Salate', 'images/terasa_alba.jpg', '10:00 - 22:00'),
+(10, 'Restaurant Saturn Blue', 'Faleza Saturn, Saturn', '+40 749 111 222', 4, 'www.saturnblue.ro', 'Restaurant elegant cu preparate internaționale și vedere spre plajă.', 'Piscină, Lounge bar', 'Pește, Fripturi, Deserturi', 'images/saturn_blue.jpg', '12:00 - 23:30'),
+(10, 'Casa Saturn', 'Strada Greenport 4, Saturn', '+40 749 555 888', 3, 'www.casastaturn.ro', 'Restaurant tradițional românesc cu specialități din pește.', 'Terasă rustică', 'Saramură, Ciorbă de pește', 'images/casa_saturn.jpg', '09:00 - 22:00'),
+(11, 'Restaurant Callatis', 'Port Mangalia, Mangalia', '+40 750 111 333', 4, 'www.callatis.ro', 'Restaurant de tradiție din Mangalia, cu vedere la port.', 'Terasă, Muzică ambientală', 'Pește, Fructe de mare', 'images/callatis.jpg', '11:00 - 23:00'),
+(11, 'Casa Mangalia', 'Strada Rozelor 14, Mangalia', '+40 750 666 777', 3, 'www.casamng.ro', 'Restaurant românesc autentic cu produse locale.', 'Terasă acoperită', 'Tocăniță, Fripturi', 'images/casa_mangalia.jpg', '08:00 - 22:00'),
+(12, 'Restaurant Cap Aurora', 'Strada Aurora 3, Cap Aurora', '+40 756 111 222', 4, 'www.restaurantcapaurora.ro', 'Restaurant modern aproape de faleză, cu preparate tradiționale și internaționale.', 'Terasă panoramică, Wi-Fi, Parcare', 'Fripturi, Salate, Deserturi', 'images/restaurant_cap_aurora.jpg', '09:00 - 23:00'),
+(12, 'Terasa Mării', 'Faleza Cap Aurora', '+40 756 333 444', 3, 'www.terasamarii.ro', 'Terasa casuală cu vedere directă spre mare, perfectă pentru mese relaxate și cocktailuri.', 'Terasă pe plajă, Muzică live', 'Pizza, Burgeri, Fructe de mare', 'images/terasa_marii.jpg', '10:00 - 00:00'),
+(13, 'Beach Club Năvodari', 'Plaja Năvodari', '+40 751 222 333', 5, 'www.beachclubnavodari.ro', 'Club și restaurant de lux pe plajă, cu meniuri moderne.', 'DJ, Lounge, Wi-Fi', 'Fructe de mare, Salate', 'images/beachclub_navodari.jpg', '11:00 - 02:00'),
+(13, 'Restaurant La Plaja', 'Strada Plajei 9, Năvodari', '+40 751 555 666', 4, 'www.laplaja.ro', 'Restaurant relaxat direct pe nisip.', 'Terasă mare, Bar', 'Burgeri, Coaste BBQ', 'images/la_plaja.jpg', '10:00 - 23:00'),
+(14, 'Restaurant Techirghiol', 'Strada Ovidiu 2, Techirghiol', '+40 752 111 444', 3, 'www.restauranttechirghiol.ro', 'Restaurant tradițional cu specific dobrogean.', 'Terasă, Livrare', 'Saramură, Fructe de mare', 'images/restaurant_techirghiol.jpg', '09:00 - 22:00'),
+(14, 'Casa Balneară', 'Strada Lacului 7, Techirghiol', '+40 752 555 777', 4, 'www.casabalneara.ro', 'Loc liniștit, aproape de lac, perfect pentru mese în familie.', 'Terasă cu vedere la lac', 'Ciorbe, Peste prăjit', 'images/casa_balneara.jpg', '10:00 - 21:00'),
+(15, 'Ponton Restaurant', 'Laguna Gura Portiței', '+40 753 111 555', 4, 'www.pontongp.ro', 'Restaurant pe ponton între mare și lagună, specializat în pește proaspăt.', 'Terasă pe apă, Muzică ambientală', 'Midii, Doradă', 'images/ponton_gp.jpg', '12:00 - 22:00'),
+(15, 'Restaurant Laguna', 'Laguna Gura Portiței', '+40 753 777 888', 3, 'www.lagunagp.ro', 'Loc boem în inima Deltei, perfect pentru savurat preparate locale.', 'Wi-Fi, Terasă', 'Saramură, Plăcinte tradiționale', 'images/laguna_gp.jpg', '10:00 - 22:00'),
+(16, 'Tuzla Beach Bar', 'Plaja Tuzla', '+40 754 222 444', 3, 'www.tuzlabeachbar.ro', 'Bar pe plajă cu meniu de vară și cocktailuri exotice.', 'Muzică live, Terasă pe nisip', 'Salate, Wrapuri', 'images/tuzla_beach.jpg', '09:00 - 01:00'),
+(16, 'Casa de Piatra', 'Strada Principală 8, Tuzla', '+40 754 666 888', 4, 'www.casadepiatra.ro', 'Restaurant tradițional cu preparate din pește și specialități locale.', 'Terasă acoperită', 'Saramură, Borș de pește', 'images/casa_piatra.jpg', '10:00 - 22:00'),
+(17, 'Eco Corbu Grill', 'Plaja Corbu', '+40 755 111 222', 3, 'www.ecocorbugrill.ro', 'Grill rustic situat în zona ecologică a plajei Corbu.', 'Terasă eco, Muzică chill', 'Burgeri vegani, Fripturi', 'images/eco_corbu.jpg', '10:00 - 21:00'),
+(17, 'La Pescarie Corbu', 'Faleza Corbu', '+40 755 555 777', 4, 'www.lapescariacorbu.ro', 'Restaurant pescăresc autentic, specializat în preparate tradiționale.', 'Vedere la mare, Terasă', 'Pește, Midii, Ciorbă de pește', 'images/pescaria_corbu.jpg', '11:00 - 22:00');
 
 
 

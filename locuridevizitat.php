@@ -142,13 +142,13 @@
                 $sql = "SELECT * FROM locuri_vizitat_delta WHERE orased_id = $id";
             } 
             else if ($categorie == 'statb') {
-                $sql = "SELECT * FROM locuri_vizitat_statb WHERE orase_id = $id";
+                $sql = "SELECT * FROM locuri_vizitat_statb WHERE statb_id = $id";
             }
             else if ($categorie == 'statl') {
-                $sql = "SELECT * FROM locuri_vizitat_statl WHERE orase_id = $id";
+                $sql = "SELECT * FROM locuri_vizitat_statl WHERE statl_id = $id";
             }
             else if ($categorie == 'statm') {
-                $sql = "SELECT * FROM locuri_vizitat_statm WHERE orase_id = $id";
+                $sql = "SELECT * FROM locuri_vizitat_statm WHERE statm_id = $id";
             }
             else {
                 $sql = "SELECT * FROM locuri_vizitat WHERE orase_id = $id";
