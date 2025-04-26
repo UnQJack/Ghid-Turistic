@@ -144,6 +144,12 @@
             else if ($categorie == 'statb') {
                 $sql = "SELECT * FROM locuri_vizitat_statb WHERE orase_id = $id";
             }
+            else if ($categorie == 'statl') {
+                $sql = "SELECT * FROM locuri_vizitat_statl WHERE orase_id = $id";
+            }
+            else if ($categorie == 'statm') {
+                $sql = "SELECT * FROM locuri_vizitat_statm WHERE orase_id = $id";
+            }
             else {
                 $sql = "SELECT * FROM locuri_vizitat WHERE orase_id = $id";
             }
