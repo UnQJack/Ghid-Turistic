@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost:3307', 'root', '', 'ghid_turistic');
+$con = mysqli_connect('localhost:8889', 'root', 'root', 'ghid_turistic');
 
 if (!$con) {
     die("Conexiunea a eșuat: " . mysqli_connect_error());
@@ -187,16 +187,21 @@ mysqli_close($con);
             $categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? urlencode($_GET['categorie']) : 'orase';
         ?>
         <a href="locuridevizitat.php?id=<?php echo $id; ?>&categorie=<?php echo $categorie; ?>" class="btn">Locuri de vizitat</a>
-        <a href="hoteluri.php?id=<?php 
-            echo $id; ?>">Hoteluri</a>
-        <a href="#">Restaurante</a>
+        <a href="hoteluri.php?id=<?php echo $id; ?>&categorie=<?php echo $categorie; ?>" class="btn">Hoteluri</a>
+        <a href="restaurante.php?id=<?php echo $id; ?>&categorie=<?php echo $categorie; ?>" class="btn">Restaurante</a>
         <a href="orase.php?categorie=<?php 
-            if ($categorie === 'orased') { 
+            if ($categorie == 'orased') { 
                 echo 'delta'; 
             } 
-            elseif ($categorie === 'statb') { 
+            else if ($categorie == 'statb') { 
                 echo 'balneare'; 
-            } 
+            }
+            else if ($categorie == 'statl') { 
+                echo 'litorale'; 
+            }
+            else if ($categorie == 'statm') { 
+                echo 'montane'; 
+            }   
             else { 
                 echo htmlspecialchars($categorie); 
             } 
@@ -255,3 +260,4 @@ mysqli_close($con);
     </script>
 </body>
 </html>
+

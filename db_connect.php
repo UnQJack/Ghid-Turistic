@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";  // Parola default la WAMP este goală
-$password = "";      
+$servername = "localhost:8889";
+$username = "root";  
+$password = "root";      // Parola default la WAMP este goală
 $database = "ghid_turistic";
 
 $conn = new mysqli($servername, $username, $password, $database);
@@ -12,4 +12,3 @@ if ($conn->connect_error) {
 } else {
     echo "Baza de date verificată! Conectare reușită!";
 }
-

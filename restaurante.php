@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoteluri</title>
+    <title>Restaurante</title>
     <style>
         * {
             margin: 0;
@@ -48,7 +48,7 @@
             padding: 20px;
         }
 
-        .hotel {
+        .restaurant {
             display: flex;
             flex-direction: column;
             margin-bottom: 40px;
@@ -72,31 +72,31 @@
             cursor: pointer;
         }
 
-        .hotel-info {
+        .restaurant-info {
             margin-left: 20px;
             flex-grow: 1;
         }
 
-        .hotel-info h2 {
+        .restaurant-info h2 {
             margin-bottom: 10px;
             color: #2c3e50;
         }
 
-        .hotel-info p {
+        .restaurant-info p {
             margin-bottom: 5px;
             color: #2c3e50;
         }
 
-        .hotel-info .stars {
-            color: gold;
+        .restaurant-info .stars {
+            color: #2c3e50;
             font-size: 20px;
         }
 
-        .hotel-details {
+        .restaurant-details {
             margin-top: 5px;
         }
 
-        .hotel-details p {
+        .restaurant-details p {
             margin-bottom: 5px;
             color: #2c3e50;
         }
@@ -130,6 +130,14 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .program-box {
+            position: absolute;
+            font-size: 20px;
+            right: 100px;
+            width: 320px;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
@@ -156,46 +164,49 @@
     if ($id !== null) {
         // Ajustează query-ul în funcție de categoria selectată
         if ($categorie == 'orased') {
-            $sql = "SELECT * FROM hoteluri_delta WHERE orased_id = $id";
+            $sql = "SELECT * FROM restaurante_delta WHERE orased_id = $id";
         } 
-        else if($categorie == 'statb') {
-            $sql = "SELECT * FROM hoteluri_statb WHERE statb_id = $id";
+        else if ($categorie == 'statb') {
+            $sql = "SELECT * FROM restaurante_statb WHERE statb_id = $id";
         }
         else {
-            $sql = "SELECT * FROM hoteluri WHERE orase_id = $id";
+            $sql = "SELECT * FROM restaurante WHERE orase_id = $id";
         }
 
         $result = mysqli_query($con, $sql);
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='hotel'>
+                echo "<div class='restaurant'>
                         <div class='top-section'>
                             <div class='image-container'>
                                 <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
                             </div>
-                            <div class='hotel-info'>
+                            <div class='restaurant-info'>
                                 <h2>" . htmlspecialchars($row['nume']) . "</h2>
+                                    <div class='program-box'>
+                                        <strong>Program</strong>
+                                        <p>" . htmlspecialchars($row['progr']) . "</p>
+                                    </div>
                                 <p><strong>Adresă:</strong> " . htmlspecialchars($row['adresa']) . "</p>
                                 <p><strong>Nr. Telefon:</strong> " . htmlspecialchars($row['numar_telefon']) . "</p>
                                 <p><strong>Website:</strong> <a href='" . htmlspecialchars($row['website']) . "' target='_blank'>" . htmlspecialchars($row['website']) . "</a></p>
-                                <p><strong>Stele:</strong> <span class='stars'>";
+                                <p><strong>Meniu:</strong> <a href='" . htmlspecialchars($row['meniu']) . "' target='_blank'>" . htmlspecialchars($row['meniu']) . "</a></p>
+                                <p><strong>Recenzii:</strong> <span class='stars'>";
                                     for ($i = 0; $i < (int)$row['stele']; $i++) {
                                         echo "★";
                                     }
                                 echo "</span></p>
                             </div>
                         </div>
-                        <div class='hotel-details'>
+                        <div class='restaurant-details'>
                             <p><strong>Descriere:</strong> " . htmlspecialchars($row['descriere_lunga']) . "</p>
                             <p><strong>Facilități:</strong> " . htmlspecialchars($row['facilitati']) . "</p>
-                            <p><strong>Tipul Camerei:</strong> " . htmlspecialchars($row['camere']) . "</p>
-                            <p><strong>Preț:</strong> " . htmlspecialchars($row['pret'] ?? 'N/A') . " Lei/Noapte</p>
                         </div>
                       </div>";
             }
         } else {
-            echo "<p style='text-align: center;'>Nu s-au găsit hoteluri în această categorie.</p>";
+            echo "<p style='text-align: center;'>Nu s-au găsit restaurante în această categorie.</p>";
         }
     } else {
         echo "<p style='text-align: center;'>ID invalid sau parametru lipsă.</p>";

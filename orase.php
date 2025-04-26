@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect('localhost:3307', 'root', '', 'ghid_turistic');
+    $con = mysqli_connect('localhost:8889', 'root', 'root', 'ghid_turistic');
 
     if (!$con) {
         die("Conexiunea a eșuat: " . mysqli_connect_error());

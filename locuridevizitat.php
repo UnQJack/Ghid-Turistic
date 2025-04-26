@@ -117,55 +117,59 @@
         $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
         $categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? urlencode($_GET['categorie']) : 'orase';
         if ($id !== null) {
-        echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
+            echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
         } else {
-        echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
+            echo '<a href="oras.php?id=' . $id . '&categorie=' . $categorie . '">Înapoi</a>';
         }
         ?>
     </div>
 
     <div class="main-content">
-    <?php
-$con = mysqli_connect('localhost:3307', 'root', '', 'ghid_turistic');
+        <?php
+        $con = mysqli_connect('localhost:8889', 'root', 'root', 'ghid_turistic');
 
-if (!$con) {
-    die("Conexiunea a eșuat: " . mysqli_connect_error());
-}
-
-// Obține ID-ul și categoria din URL
-$id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
-$categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? $_GET['categorie'] : 'orase';
-
-if ($id !== null) {
-    // Ajustează query-ul în funcție de categoria selectată
-    if ($categorie == 'orased') {
-        $sql = "SELECT * FROM locuri_vizitat_delta WHERE orased_id = $id";
-    } else {
-        $sql = "SELECT * FROM locuri_vizitat WHERE orase_id = $id";
-    }
-    $result = mysqli_query($con, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<div class='destination'>
-                <div class='image-container'>
-                    <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
-                </div>
-                <div class='text-content'>
-                    <h2>" . htmlspecialchars($row['nume']) . "</h2>
-                    <p>" . htmlspecialchars($row['descriere']) . "</p>
-                </div>
-            </div>";
+        if (!$con) {
+            die("Conexiunea a eșuat: " . mysqli_connect_error());
         }
-    } else {
-        echo "<p style='text-align: center;'>Nu s-au găsit locuri de vizitat în această categorie.</p>";
-    }
-} else {
-    echo "<p style='text-align: center;'>Oraș invalid sau parametru lipsă.</p>";
-}
 
-mysqli_close($con);
-?>
+        // Obține ID-ul și categoria din URL
+        $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : null;
+        $categorie = isset($_GET['categorie']) && !empty($_GET['categorie']) ? $_GET['categorie'] : 'orase';
+
+        if ($id !== null) {
+            // Ajustează query-ul în funcție de categoria selectată
+            if ($categorie == 'orased') {
+                $sql = "SELECT * FROM locuri_vizitat_delta WHERE orased_id = $id";
+            } 
+            else if ($categorie == 'statb') {
+                $sql = "SELECT * FROM locuri_vizitat_statb WHERE orase_id = $id";
+            }
+            else {
+                $sql = "SELECT * FROM locuri_vizitat WHERE orase_id = $id";
+            }
+            $result = mysqli_query($con, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='destination'>
+                        <div class='image-container'>
+                            <img src='" . $row['imagine'] . "' onclick='openModal(this.src)'>
+                        </div>
+                        <div class='text-content'>
+                        <h2>" . htmlspecialchars($row['nume']) . "</h2>
+                        <p>" . htmlspecialchars($row['descriere']) . "</p>
+                        </div>
+                    </div>";
+                }
+            } else {
+                echo "<p style='text-align: center;'>Nu s-au găsit locuri de vizitat în această categorie.</p>";
+            }
+        } else {
+            echo "<p style='text-align: center;'>Oraș invalid sau parametru lipsă.</p>";
+        }
+
+        mysqli_close($con);
+        ?>
     </div>
 
     <!-- Modal pentru zoom -->

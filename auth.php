@@ -1,48 +1,44 @@
 <?php
-$con = mysqli_connect('localhost:3307', 'root', '', 'ghid_turistic');
+$con = mysqli_connect('localhost:8889', 'root', 'root', 'ghid_turistic');
 
+// Verificare conexiune
 if (!$con) {
     die("Conexiunea a eșuat: " . mysqli_connect_error());
 }
+
+$mesaj = "";
+$stil = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $parola = $_POST['parola'];
 
-    // Verifică dacă username-ul există deja
-    $check_query = "SELECT * FROM auth WHERE username = ?";
-    $stmt = $con->prepare($check_query);
+    // Caută utilizatorul în baza de date
+    $query = "SELECT * FROM users WHERE username = ?";
+    $stmt = $con->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        echo "
-            <div style='width: 50%; margin: 50px auto; padding: 20px; border-radius: 10px; text-align: center; font-family: Arial, sans-serif;'>
-                <h2 style='color: black;'>Autentificare cu succes</h2>
-                <a href='homepage.html' style='display: inline-block; padding: 10px 20px; background: #2c3e50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;'>
-                    Înapoi la pagina principala
-                </a>
-            </div>";
-    } else {
-        // Criptează parola înainte de a o salva
-        $parola_hash = password_hash($parola, PASSWORD_DEFAULT);
+    if ($result->num_rows == 1) {
+        $user = $result->fetch_assoc();
 
-        if ($stmt->execute()) {
-            echo "
-            <div style='width: 50%; margin: 50px auto; padding: 20px; border-radius: 10px; text-align: center; font-family: Arial, sans-serif;'>
-                <h2 style='color: black;'>Eroare: Username/parola incorecte!</h2>
-                <a href='auth.html' style='display: inline-block; padding: 10px 20px; background: #2c3e50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;'>
-                    Înapoi la autentificare
-                </a>
-            </div>";
+        // Verifică parola
+        if (password_verify($parola, $user['parola'])) {
+            $mesaj = "Autentificare reușită. Bine ai venit, <strong>$username</strong>!";
+            $stil = "background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;";
         } else {
-            echo "Eroare la înregistrare: " . mysqli_error($con);
+            $mesaj = "Parolă incorectă!";
+            $stil = "background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;";
         }
+    } else {
+        $mesaj = "Utilizatorul nu există!";
+        $stil = "background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;";
     }
 
     $stmt->close();
 }
+
 mysqli_close($con);
 ?>
 
@@ -57,19 +53,27 @@ mysqli_close($con);
     <div class="sidebar">
         <a href="homepage.html">Înapoi</a>
     </div>
+
 	<div class="auth">
 		<h1 style="color: #2c3e50;">Autentificare</h1>
+
+        <?php if ($mesaj): ?>
+            <div style="width: 60%; margin: 20px auto; padding: 15px; border-radius: 8px; text-align: center; font-family: Arial, sans-serif; <?= $stil ?>">
+                <?= $mesaj ?>
+            </div>
+        <?php endif; ?>
+
 		<form name="authForm" method="POST" action="auth.php">
 			<div class="form-group">
 			    <label>Username</label>
-			    <input type="text" name="username" class="form-control" id="inputText" required>
+			    <input type="text" name="username" class="form-control" required>
 			</div>
 			<div class="form-group">
 			    <label>Parola</label>
-			    <input type="parola" name="parola" class="form-control" id="inputText" required>
+			    <input type="password" name="parola" class="form-control" required>
 			</div>
             <div class="wrapper">
-				<button type="submit" class="btn btn-primary" ng-click="performValidation()" name='login'>LogIn</button>
+				<button type="submit" class="btn btn-primary" name="login">LogIn</button>
 			</div>
 		</form>
 	</div>
