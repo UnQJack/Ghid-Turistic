@@ -1,19 +1,26 @@
 # Ghid-Turistic
-<img width="830" alt="Screenshot 2025-06-27 at 4 14 16 PM" src="https://github.com/user-attachments/assets/e82e09b7-7b78-4b13-a4fd-a898128d965b" />
+<img width="1509" alt="Screenshot 2025-06-27 at 4 30 54 PM" src="https://github.com/user-attachments/assets/bd7593fc-ec6b-41eb-9b7a-e39aa5a3fbe1" />
 <p>
-  Interfața grafică a aplicației este simplă, intuitivă și organizată, cu un meniu lateral pentru
-navigare ușoară între secțiuni. Imaginea de fundal ilustrativă și titlul „România” evidențiază tematica
-turistică. Designul este receptiv și adaptat pentru toate tipurile de dispozitive.
-Structura paginii include un meniu de navigare lateral, care permite acces rapid la secțiuni
-precum „Orașe”, „Cazare”, „Restaurante” și „Recenzii”. Butoanele sunt evidențiate printr-un efect de
-hover pentru o experiență vizuală plăcută.
+  Interfața grafică a aplicației este simplă, intuitivă și organizată, cu un meniu lateral pentru navigare ușoară între secțiuni. Imaginea de fundal ilustrativă și titlul „România” evidențiază tematica turistică. Designul este receptiv și adaptat pentru toate tipurile de dispozitive. Structura paginii include un meniu de navigare lateral, care permite acces rapid la secțiuni precum „Destinatii”, „Recenzii”, „Inregistrare”, „Autentificare” si „Cautare”. Butoanele sunt evidențiate printr-un efect de hover pentru o experiență vizuală plăcută.
 </p>
+<img width="1512" alt="Screenshot 2025-06-27 at 4 37 34 PM" src="https://github.com/user-attachments/assets/97f7443b-a6d2-4360-92b4-3757d3f026d3" />
+<p>
+  Un meniu lateral ce contine categoriile: Orașe turistice, Lunca și Delta Dunării, Stațiuni balneare, Stațiuni litorale, Stațiuni montane, Înapoi.
+</p>
+<img width="1511" alt="Screenshot 2025-06-27 at 4 37 54 PM" src="https://github.com/user-attachments/assets/247adcef-16a8-48d5-8a7e-c90bdba568d6" />
+<p>
+  Pagina pentru Orase turistice. 
+  Pentru fiecare oras in parte din oricare alta categorie se gaseste un meniu lateral pentru: Locuri de vizitat, Hoteluri, Restaurante, Înapoi.
+</p>
+<img width="1512" alt="Screenshot 2025-06-27 at 4 47 25 PM" src="https://github.com/user-attachments/assets/aa37307c-743b-4899-b3c0-1efe2bdafbc1" />
+<img width="1512" alt="Screenshot 2025-06-27 at 4 48 38 PM" src="https://github.com/user-attachments/assets/70266c97-524e-4ba4-8584-7a685e8f5849" />
+<img width="1512" alt="Screenshot 2025-06-27 at 4 48 59 PM" src="https://github.com/user-attachments/assets/f075edf9-5130-4cfe-8f18-19337f2fde6b" />
+<img width="1512" alt="Screenshot 2025-06-27 at 4 49 19 PM" src="https://github.com/user-attachments/assets/0c73326d-02f4-43e6-8d2e-8f5476bc9f8b" />
+<img width="1506" alt="Screenshot 2025-06-27 at 4 36 54 PM" src="https://github.com/user-attachments/assets/f9ea0a32-a3d8-4971-bc49-7b4df3d062dc" />
+<img width="1512" alt="Screenshot 2025-06-27 at 4 35 45 PM" src="https://github.com/user-attachments/assets/d4b39008-70b5-489f-bc10-5a1e41ffb1db" />
 <img width="886" alt="Screenshot 2025-06-27 at 4 15 22 PM" src="https://github.com/user-attachments/assets/7ff7215f-50db-4bb4-bc0e-4716a681ffdd" />
 <p>
-  Pentru a îmbunătăți experiența utilizatorilor în procesul de identificare și selecție a destinațiilor
-turistice din România, aplicația web a fost extinsă prin integrarea unei hărți interactive dezvoltate cu
-ajutorul Leaflet – o bibliotecă JavaScript open-source, cunoscută pentru performanța ridicată,
-flexibilitate și ușurința în utilizare.
+  Pentru a îmbunătăți experiența utilizatorilor în procesul de identificare și selecție a destinațiilor turistice din România, aplicația web a fost extinsă prin integrarea unei hărți interactive dezvoltate cu ajutorul Leaflet – o bibliotecă JavaScript open-source, cunoscută pentru performanța ridicată, flexibilitate și ușurința în utilizare.
 </p>
 <img width="356" alt="Screenshot 2025-06-27 at 4 21 25 PM" src="https://github.com/user-attachments/assets/62271657-cae7-40f1-ac37-5ea4b51558fc" />
 <p>
