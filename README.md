@@ -22,6 +22,11 @@
 <p>
   Pentru a îmbunătăți experiența utilizatorilor în procesul de identificare și selecție a destinațiilor turistice din România, aplicația web a fost extinsă prin integrarea unei hărți interactive dezvoltate cu ajutorul Leaflet – o bibliotecă JavaScript open-source, cunoscută pentru performanța ridicată, flexibilitate și ușurința în utilizare.
 </p>
+<img width="829" alt="Screenshot 2025-06-27 at 4 54 33 PM" src="https://github.com/user-attachments/assets/e411b262-c79b-4156-afe6-8c2c22b92a36" />
+<p>
+  Pentru ca utilizatorul (în acest caz, administratorul aplicației) să poată efectua operații demodificare, ștergere sau inserare a datelor din baza de date, aplicația web oferă o interfață grafică intuitivă, integrată în serverul local. Această interfață simplifică semnificativ procesul de gestionare a datelor, eliminând necesitatea scrierii directe de comenzi SQL și permițând interacțiuni rapide și eficiente prin elemente vizuale, cum ar fi formulare, butoane și liste dinamice.
+</p>
+<img width="895" alt="Screenshot 2025-06-27 at 4 55 54 PM" src="https://github.com/user-attachments/assets/b91a3a80-6ca5-4400-81f1-7450e413371a" />
 <img width="356" alt="Screenshot 2025-06-27 at 4 21 25 PM" src="https://github.com/user-attachments/assets/62271657-cae7-40f1-ac37-5ea4b51558fc" />
 <p>
   Se instaleaza WAMP pentru Windows, respectiv MAMP pentru MACOS</p>
